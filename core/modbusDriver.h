@@ -1,9 +1,9 @@
 /*
- *	SiemensS7TcpDriver.h
- *	!CHOAS
- *	Created by Bisegni Claudio.
+ *	modbusDriver
+ *	!CHAOS
+ *	Created by Andrea Michelotti.
  *
- *    	Copyright 2013 INFN, National Institute of Nuclear Physics
+ *    	Copyright 2014 INFN, National Institute of Nuclear Physics
  *
  *    	Licensed under the Apache License, Version 2.0 (the "License");
  *    	you may not use this file except in compliance with the License.
@@ -24,10 +24,12 @@
 // include your class/functions headers here
 
 #include <chaos/cu_toolkit/driver_manager/driver/AbstractDriverPlugin.h>
-
+#include <driver/modbus/core/ChaosModbusInterface.h>
+#include <common/modbus/modbus.h>
+#include <boost/shared_ptr.hpp>
 //this need to be out the nasmespace
 DEFINE_CU_DRIVER_DEFINITION_PROTOTYPE(modbusDriver)
-
+namespace chaos{
 namespace driver {
 	namespace modbus {
 		namespace cu_driver = chaos::cu::driver_manager::driver;
@@ -39,7 +41,9 @@ namespace driver {
 			
 			void driverInit(const char *initParameter) throw(chaos::CException);
 			void driverDeinit() throw(chaos::CException);
-			
+
+            boost::shared_ptr< ::common::modbus::AbstractModbus > driver;
+           
 		public:
 			modbusDriver();
 			~modbusDriver();
@@ -48,5 +52,6 @@ namespace driver {
 		};
 	}
 }
+}
 
-#endif /* defined(__ControlUnitTest__SiemensS7TcpDriver__) */
+#endif

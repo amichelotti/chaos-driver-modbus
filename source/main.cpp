@@ -1,7 +1,7 @@
 /*
  *	main.cpp
- *	!CHOAS
- *	Created by Bisegni Claudio.
+ *	!CHAOS
+ *	Created by Andrea Michelotti
  *
  *    	Copyright 2013 INFN, National Institute of Nuclear Physics
  *
@@ -18,8 +18,8 @@
  *    	limitations under the License.
  */
 
-#include "modbusDriver.h"
-#include "modbusControlUnit.h"
+#include <driver/modbus/core/modbusDriver.h>
+#include "ModbusControlUnit.h"
 
 #include <chaos/common/chaos_constants.h>
 #include <chaos/cu_toolkit/ChaosCUToolkit.h>
@@ -40,16 +40,12 @@
 using namespace std;
 using namespace chaos;
 using namespace chaos::cu;
-using namespace driver::modbus;
 
 
 namespace common_plugin = chaos::common::plugin;
 namespace common_utility = chaos::common::utility;
 namespace cu_driver_manager = chaos::cu::driver_manager;
 
-
-
-#define OPT_DEVICE_ID		"device_id"
 
 int main (int argc, char* argv[] )
 {
@@ -58,22 +54,18 @@ int main (int argc, char* argv[] )
 	string tmp_address;
     try {
 		//! [Custom Option]
-		ChaosCUToolkit::getInstance()->getGlobalConfigurationInstance()->addOption(OPT_DEVICE_ID, po::value<string>(&tmp_device_id), "Specify the device id of the siemen s7 plc");
+		//ChaosCUToolkit::getInstance()->getGlobalConfigurationInstance()->addOption(OPT_DEVICE_ID, po::value<string>(&tmp_device_id), "Specify the device id of the siemen s7 plc");
 		//! [Custom Option]
 		
 		//! [CUTOOLKIT Init]
 		ChaosCUToolkit::getInstance()->init(argc, argv);
-		if(!ChaosCUToolkit::getInstance()->getGlobalConfigurationInstance()->hasOption(OPT_DEVICE_ID)) throw CException(2, "device id option is mandatory", __FUNCTION__);
 		//! [CUTOOLKIT Init]
-		
-		//! [Driver Registration]
-		MATERIALIZE_INSTANCE_AND_INSPECTOR_WITH_NS(driver::modbus, modbusDriver)
+        MATERIALIZE_INSTANCE_AND_INSPECTOR_WITH_NS(chaos::driver::modbus, modbusDriver)
 		cu_driver_manager::DriverManager::getInstance()->registerDriver(modbusDriverInstancer, modbusDriverInspector);
-		//! [Driver Registration]
-
-		//! [Adding the CustomControlUnit]
-		ChaosCUToolkit::getInstance()->addControlUnit(new modbusControlUnit(tmp_device_id));
-		//! [Adding the CustomControlUnit]
+        // initiali
+		chaos::cu::driver_manager::driver::DrvRequestInfo drv1 = {"modbusDriver", "1.0.0", "" };
+		chaos::cu::control_manager::AbstractControlUnit::ControlUnitDriverList driver_list; driver_list.push_back(drv1);
+		ChaosCUToolkit::getInstance()->registerControlUnit< ::driver::modbus::ModbusControlUnit >();
 		
 		//! [Starting the Framework]
 		ChaosCUToolkit::getInstance()->start();

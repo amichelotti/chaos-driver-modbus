@@ -17,24 +17,22 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build)
 ADD_DEFINITIONS(-g -O2 -Wall)
 add_definitions(-DBOOST_ALL_DYN_LINK)
 
-SET(modbusdriver_src source/modbusDriver.cpp source/modbusDriverSwitch.cpp)
+SET(modbusdriver_src core/modbusDriver.cpp core/ChaosModbusInterface.cpp)
 SET(modbuscu_src source/main.cpp source/modbusControlUnit.cpp ${modbusdriver_src})
 
-INCLUDE_DIRECTORIES(. ${PROJECT_SOURCE_DIR}/../../usr/local/include)
+INCLUDE_DIRECTORIES(. ../../ ${PROJECT_SOURCE_DIR}/../../usr/local/include)
 LINK_DIRECTORIES(${PROJECT_SOURCE_DIR}/../../chaosframework/usr/local/lib)
 
 ADD_EXECUTABLE(modbusControlUnit ${modbuscu_src})
-ADD_LIBRARY(modbusDriver SHARED ${modbusdriver_src})
-set_target_properties(modbusDriver PROPERTIES PREFIX "" SUFFIX ".extension")
-
-IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-	TARGET_LINK_LIBRARIES(modbusControlUnit pthread chaos_cutoolkit chaos_common boost_program_options boost_system boost_thread boost_chrono boost_regex boost_log boost_log_setup boost_atomic memcached msgpack msgpack-rpc mpio)
-	TARGET_LINK_LIBRARIES(modbusDriver pthread chaos_cutoolkit chaos_common boost_program_options boost_system boost_thread boost_chrono boost_regex boost_log boost_log_setup boost_atomic memcached msgpack msgpack-rpc mpio)
-ELSE(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-	TARGET_LINK_LIBRARIES(modbusControlUnit chaos_cutoolkit chaos_common boost_program_options boost_system boost_thread boost_chrono boost_regex boost_log boost_log_setup boost_atomic memcached msgpack msgpack-rpc mpio)
-	TARGET_LINK_LIBRARIES(modbusDriver chaos_cutoolkit chaos_common boost_program_options boost_system boost_thread boost_chrono boost_regex boost_log boost_log_setup boost_atomic memcached msgpack msgpack-rpc mpio)
-ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+ADD_LIBRARY(chaos_modbus SHARED ${modbusdriver_src})
 
 
-INSTALL_TARGETS(/bin/modbus modbusControlUnit)
-INSTALL_TARGETS(/extension modbusDriver)
+TARGET_LINK_LIBRARIES(modbusControlUnit pthread chaos_cutoolkit chaos_common boost_program_options boost_system boost_thread boost_chrono boost_regex boost_log boost_log_setup boost_atomic memcached common_modbus)
+TARGET_LINK_LIBRARIES(chaos_modbus pthread chaos_cutoolkit chaos_common boost_program_options boost_system boost_thread boost_chrono boost_regex boost_log boost_log_setup boost_atomic memcached common_modbus)
+
+
+
+INSTALL_TARGETS(/bin modbusControlUnit)
+INSTALL_TARGETS(/lib chaos_modbus)
+FILE(GLOB headers "core/*.h")
+INSTALL(FILES ${headers} DESTINATION include/driver/modbus/core)
