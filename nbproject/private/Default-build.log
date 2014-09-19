@@ -1,0 +1,199 @@
+[ 16%] Building CXX object CMakeFiles/chaos_modbus.dir/core/modbusDriver.cpp.o
+In file included from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bson.h:37,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/data/CDataWrapper.h:25,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/utility/InizializableService.h:36,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/driver_manager/driver/AbstractDriver.h:30,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/driver_manager/driver/AbstractDriverPlugin.h:25,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/core/modbusDriver.h:26,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/core/modbusDriver.cpp:20:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h: In constructor ‘bson::BSONObjBuilder::BSONObjBuilder(bool, int)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:708: warning: ‘bson::BSONObjBuilder::_b’ will be initialized after
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:699: warning:   ‘bson::BufBuilder bson::BSONObjBuilder::_buf’
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:50: warning:   when initialized here
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h: In constructor ‘bson::BSONObjBuilder::BSONObjBuilder(int)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:708: warning: ‘bson::BSONObjBuilder::_b’ will be initialized after
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:699: warning:   ‘bson::BufBuilder bson::BSONObjBuilder::_buf’
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:59: warning:   when initialized here
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h: In constructor ‘bson::BSONObjBuilder::BSONObjBuilder(bson::BufBuilder&)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:708: warning: ‘bson::BSONObjBuilder::_b’ will be initialized after
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:699: warning:   ‘bson::BufBuilder bson::BSONObjBuilder::_buf’
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:67: warning:   when initialized here
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h: In constructor ‘bson::BSONObjBuilder::BSONObjBuilder(const bson::BSONSizeTracker&)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:708: warning: ‘bson::BSONObjBuilder::_b’ will be initialized after
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:699: warning:   ‘bson::BufBuilder bson::BSONObjBuilder::_buf’
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:71: warning:   when initialized here
+In file included from /home/chaos/chaos_bundle_cnaf/driver/modbus/core/modbusDriver.cpp:20:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/modbusDriver.h: At global scope:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/modbusDriver.h:31: warning: ‘visibility’ attribute ignored on non-class types
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/modbusDriver.cpp:36: warning: ‘visibility’ attribute ignored on non-class types
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/modbusDriver.cpp:36: warning: ‘visibility’ attribute ignored on non-class types
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/modbusDriver.cpp:41: warning: ‘visibility’ attribute ignored on non-class types
+[ 33%] Building CXX object CMakeFiles/chaos_modbus.dir/core/ChaosModbusInterface.cpp.o
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp: In member function ‘virtual bool chaos::driver::modbus::ChaosModbusInterface::connect()’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:78: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:78: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp: In member function ‘virtual int chaos::driver::modbus::ChaosModbusInterface::flush()’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:84: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:84: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp: In member function ‘virtual int chaos::driver::modbus::ChaosModbusInterface::close()’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:90: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:90: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp: In member function ‘virtual void chaos::driver::modbus::ChaosModbusInterface::set_write_timeo(uint32_t)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:96: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:96: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp: In member function ‘virtual void chaos::driver::modbus::ChaosModbusInterface::set_read_timeo(uint32_t)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:102: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:102: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp: In member function ‘virtual uint32_t chaos::driver::modbus::ChaosModbusInterface::get_write_timeo()’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:106: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:106: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp: In member function ‘virtual uint32_t chaos::driver::modbus::ChaosModbusInterface::get_read_timeo()’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:112: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:112: warning: null argument where non-null required (argument 2)
+Linking CXX shared library build/libchaos_modbus.so
+[ 33%] Built target chaos_modbus
+[ 50%] Building CXX object CMakeFiles/modbusControlUnit.dir/source/main.cpp.o
+In file included from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/ControlManager/AbstractControlUnit.h:34,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/ControlManager/RTAbstractControlUnit.h:26,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/source/ModbusControlUnit.h:23,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/source/main.cpp:22:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/action/ActionDescriptor.h:119: warning: ignoring #pragma mark Param
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/action/ActionDescriptor.h:134: warning: ignoring #pragma mark Template
+In file included from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bson.h:37,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/data/CDataWrapper.h:25,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/utility/InizializableService.h:36,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/driver_manager/driver/AbstractDriver.h:30,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/driver_manager/driver/AbstractDriverPlugin.h:25,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../driver/modbus/core/modbusDriver.h:26,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/source/main.cpp:21:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h: In constructor ‘bson::BSONObjBuilder::BSONObjBuilder(bool, int)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:708: warning: ‘bson::BSONObjBuilder::_b’ will be initialized after
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:699: warning:   ‘bson::BufBuilder bson::BSONObjBuilder::_buf’
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:50: warning:   when initialized here
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h: In constructor ‘bson::BSONObjBuilder::BSONObjBuilder(int)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:708: warning: ‘bson::BSONObjBuilder::_b’ will be initialized after
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:699: warning:   ‘bson::BufBuilder bson::BSONObjBuilder::_buf’
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:59: warning:   when initialized here
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h: In constructor ‘bson::BSONObjBuilder::BSONObjBuilder(bson::BufBuilder&)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:708: warning: ‘bson::BSONObjBuilder::_b’ will be initialized after
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:699: warning:   ‘bson::BufBuilder bson::BSONObjBuilder::_buf’
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:67: warning:   when initialized here
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h: In constructor ‘bson::BSONObjBuilder::BSONObjBuilder(const bson::BSONSizeTracker&)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:708: warning: ‘bson::BSONObjBuilder::_b’ will be initialized after
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:699: warning:   ‘bson::BufBuilder bson::BSONObjBuilder::_buf’
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:71: warning:   when initialized here
+In file included from /home/chaos/chaos_bundle_cnaf/driver/modbus/source/main.cpp:21:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../driver/modbus/core/modbusDriver.h: At global scope:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../driver/modbus/core/modbusDriver.h:31: warning: ‘visibility’ attribute ignored on non-class types
+In file included from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/direct_io/DirectIODataPack.h:36,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/direct_io/DirectIOForwarder.h:24,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/direct_io/DirectIOClientConnection.h:33,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/direct_io/DirectIOClient.h:34,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/direct_io/impl/ZMQDirectIOClient.h:26,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/direct_io/DirectIO.h:24,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/network/NetworkBroker.h:28,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/CommandManager/CommandManager.h:37,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/ChaosCUToolkit.h:32,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/source/main.cpp:25:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/utility/endianess.h: In member function ‘float util::swap_bytes<float, 4ul>::operator()(float)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/utility/endianess.h:79: warning: dereferencing type-punned pointer will break strict-aliasing rules
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/utility/endianess.h:80: warning: dereferencing type-punned pointer will break strict-aliasing rules
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/utility/endianess.h: In member function ‘double util::swap_bytes<double, 8ul>::operator()(double)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/utility/endianess.h:105: warning: dereferencing type-punned pointer will break strict-aliasing rules
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/utility/endianess.h:106: warning: dereferencing type-punned pointer will break strict-aliasing rules
+In file included from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/direct_io/DirectIOClientConnection.h:35,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/direct_io/DirectIOClient.h:34,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/direct_io/impl/ZMQDirectIOClient.h:26,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/direct_io/DirectIO.h:24,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/network/NetworkBroker.h:28,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/CommandManager/CommandManager.h:37,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/ChaosCUToolkit.h:32,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/source/main.cpp:25:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/direct_io/channel/DirectIOVirtualClientChannel.h: In constructor ‘chaos::common::direct_io::channel::DisposeSentMemoryInfo::DisposeSentMemoryInfo(chaos::common::direct_io::channel::DirectIOVirtualClientChannel*, uint8_t, uint16_t)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/direct_io/channel/DirectIOVirtualClientChannel.h:42: warning: ‘chaos::common::direct_io::channel::DisposeSentMemoryInfo::channel’ will be initialized after
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/direct_io/channel/DirectIOVirtualClientChannel.h:40: warning:   ‘uint8_t chaos::common::direct_io::channel::DisposeSentMemoryInfo::sent_part’
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/direct_io/channel/DirectIOVirtualClientChannel.h:43: warning:   when initialized here
+[ 66%] Building CXX object CMakeFiles/modbusControlUnit.dir/source/ModbusControlUnit.cpp.o
+In file included from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/ControlManager/AbstractControlUnit.h:34,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/ControlManager/RTAbstractControlUnit.h:26,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/source/ModbusControlUnit.h:23,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/source/ModbusControlUnit.cpp:21:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/action/ActionDescriptor.h:119: warning: ignoring #pragma mark Param
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/action/ActionDescriptor.h:134: warning: ignoring #pragma mark Template
+In file included from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bson.h:37,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/data/CDataWrapper.h:25,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/ControlManager/handler/DSAttributeHandler.h:25,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/ControlManager/DSAttributeHandlerExecutionEngine.h:32,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/ControlManager/RTAbstractControlUnit.h:24,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/source/ModbusControlUnit.h:23,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/source/ModbusControlUnit.cpp:21:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h: In constructor ‘bson::BSONObjBuilder::BSONObjBuilder(bool, int)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:708: warning: ‘bson::BSONObjBuilder::_b’ will be initialized after
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:699: warning:   ‘bson::BufBuilder bson::BSONObjBuilder::_buf’
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:50: warning:   when initialized here
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h: In constructor ‘bson::BSONObjBuilder::BSONObjBuilder(int)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:708: warning: ‘bson::BSONObjBuilder::_b’ will be initialized after
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:699: warning:   ‘bson::BufBuilder bson::BSONObjBuilder::_buf’
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:59: warning:   when initialized here
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h: In constructor ‘bson::BSONObjBuilder::BSONObjBuilder(bson::BufBuilder&)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:708: warning: ‘bson::BSONObjBuilder::_b’ will be initialized after
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:699: warning:   ‘bson::BufBuilder bson::BSONObjBuilder::_buf’
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:67: warning:   when initialized here
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h: In constructor ‘bson::BSONObjBuilder::BSONObjBuilder(const bson::BSONSizeTracker&)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:708: warning: ‘bson::BSONObjBuilder::_b’ will be initialized after
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:699: warning:   ‘bson::BufBuilder bson::BSONObjBuilder::_buf’
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:71: warning:   when initialized here
+[ 83%] Building CXX object CMakeFiles/modbusControlUnit.dir/core/modbusDriver.cpp.o
+In file included from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bson.h:37,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/data/CDataWrapper.h:25,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/utility/InizializableService.h:36,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/driver_manager/driver/AbstractDriver.h:30,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/driver_manager/driver/AbstractDriverPlugin.h:25,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/core/modbusDriver.h:26,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/core/modbusDriver.cpp:20:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h: In constructor ‘bson::BSONObjBuilder::BSONObjBuilder(bool, int)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:708: warning: ‘bson::BSONObjBuilder::_b’ will be initialized after
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:699: warning:   ‘bson::BufBuilder bson::BSONObjBuilder::_buf’
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:50: warning:   when initialized here
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h: In constructor ‘bson::BSONObjBuilder::BSONObjBuilder(int)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:708: warning: ‘bson::BSONObjBuilder::_b’ will be initialized after
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:699: warning:   ‘bson::BufBuilder bson::BSONObjBuilder::_buf’
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:59: warning:   when initialized here
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h: In constructor ‘bson::BSONObjBuilder::BSONObjBuilder(bson::BufBuilder&)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:708: warning: ‘bson::BSONObjBuilder::_b’ will be initialized after
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:699: warning:   ‘bson::BufBuilder bson::BSONObjBuilder::_buf’
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:67: warning:   when initialized here
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h: In constructor ‘bson::BSONObjBuilder::BSONObjBuilder(const bson::BSONSizeTracker&)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:708: warning: ‘bson::BSONObjBuilder::_b’ will be initialized after
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:699: warning:   ‘bson::BufBuilder bson::BSONObjBuilder::_buf’
+/home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h:71: warning:   when initialized here
+In file included from /home/chaos/chaos_bundle_cnaf/driver/modbus/core/modbusDriver.cpp:20:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/modbusDriver.h: At global scope:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/modbusDriver.h:31: warning: ‘visibility’ attribute ignored on non-class types
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/modbusDriver.cpp:36: warning: ‘visibility’ attribute ignored on non-class types
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/modbusDriver.cpp:36: warning: ‘visibility’ attribute ignored on non-class types
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/modbusDriver.cpp:41: warning: ‘visibility’ attribute ignored on non-class types
+[100%] Building CXX object CMakeFiles/modbusControlUnit.dir/core/ChaosModbusInterface.cpp.o
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp: In member function ‘virtual bool chaos::driver::modbus::ChaosModbusInterface::connect()’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:78: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:78: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp: In member function ‘virtual int chaos::driver::modbus::ChaosModbusInterface::flush()’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:84: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:84: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp: In member function ‘virtual int chaos::driver::modbus::ChaosModbusInterface::close()’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:90: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:90: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp: In member function ‘virtual void chaos::driver::modbus::ChaosModbusInterface::set_write_timeo(uint32_t)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:96: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:96: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp: In member function ‘virtual void chaos::driver::modbus::ChaosModbusInterface::set_read_timeo(uint32_t)’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:102: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:102: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp: In member function ‘virtual uint32_t chaos::driver::modbus::ChaosModbusInterface::get_write_timeo()’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:106: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:106: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp: In member function ‘virtual uint32_t chaos::driver::modbus::ChaosModbusInterface::get_read_timeo()’:
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:112: warning: null argument where non-null required (argument 2)
+/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp:112: warning: null argument where non-null required (argument 2)
+Linking CXX executable build/modbusControlUnit
+[100%] Built target modbusControlUnit
