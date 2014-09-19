@@ -130,11 +130,15 @@ void own::ModbusFemtoUnit::unitInit() throw(CException) {
         
         RangeValueInfo vi;
         getAttributeRangeValueInfo("slaveID", vi);
-        if(vi.defaultValue.size()!=0){
+        if(vi.defaultValue.size()==0){
               throw chaos::CException(1, "You must define a slaveID for the CU", __FUNCTION__);
         }
-       
-        SCCUAPP << "CU slave:"<< slave_id <<regadd;
+        slave_id =  boost::lexical_cast<int>(vi.defaultValue);
+        SCCUAPP << "CU slave:"<< slave_id;
+        if(driver->connect()==false){
+             throw chaos::CException(1, "cannot perform modbus connect", __FUNCTION__);
+
+        }
         
    }
 

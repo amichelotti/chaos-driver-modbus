@@ -74,7 +74,6 @@ void modbusDriver::driverInit(const char *initParameter) throw(chaos::CException
         
         throw chaos::CException(1, "Cannot initialize modbus driver", "modbusDriver::driverInit");
     }
-    
     driver.reset(t);
     
 }
@@ -159,14 +158,19 @@ cu_driver::MsgManagmentResultType::MsgManagmentResult  modbusDriver::execOpcode(
         }
         case OP_READ_HOLDING_REGISTERS:{
             uint16_t* buf=(uint16_t*)(out + 1);
-            modbusLDBG_ << "Read holding register:@"<<in->regadd<<" sizeb:"<<in->sizeb<<" slave:"<<in->slaveid<<" @x"<<hex<<buf;
+            modbusLDBG_ << "Read holding register:@"<<dec<<in->regadd<<" sizeb:"<<in->sizeb<<" slave:"<<in->slaveid<<" @x"<<hex<<buf;
             out->ret=driver->read_holding_registers(in->regadd, in->sizeb>>1,buf,in->slaveid);
             break;
         }
         case OP_READ_INPUT_REGISTERS:{
             uint16_t* buf=(uint16_t*)(out + 1);
-            modbusLDBG_ << "Read input register:@"<<in->regadd<<" sizeb:"<<in->sizeb<<" slave:"<<in->slaveid<<" @x"<<hex<<buf;
-            out->ret=driver->read_input_registers(in->regadd, in->sizeb>>1,buf,in->slaveid);
+            int ret;
+            modbusLDBG_ << "Read input register:@"<<dec<<in->regadd<<" sizeb:"<<in->sizeb<<" slave:"<<in->slaveid<<" @x"<<hex<<buf;
+            //float* data=(float*)buf;
+            ret = driver->read_input_registers(in->regadd, in->sizeb>>1,(uint16_t*)buf,in->slaveid);
+           
+            //modbusLDBG_ << " DATA:"<<*data;
+            out->ret= ret;
             break;
         }
         case OP_REPORT_SLAVE:{
@@ -179,14 +183,14 @@ cu_driver::MsgManagmentResultType::MsgManagmentResult  modbusDriver::execOpcode(
             
         case OP_FORCE_SINGLE_COIL:{
             uint8_t value = *(uint8_t*)(in+1);
-            modbusLDBG_ << "Force Single Coil:@"<<in->regadd<<" value:x"<<hex<<value<<" slave:"<<dec<<in->slaveid;
+            modbusLDBG_ << "Force Single Coil:@"<<dec<<in->regadd<<" value:x"<<hex<<value<<" slave:"<<dec<<in->slaveid;
 
             out->ret = driver->force_single_coil(in->regadd, value,in->slaveid);
             break;
         }
         case OP_PRESET_SINGLE_REGISTER:{
             uint16_t value = *(uint16_t*)(in+1);
-            modbusLDBG_ << "Preset single register:@"<<in->regadd<<" value:x"<<hex<<value<<" slave:"<<dec<<in->slaveid;
+            modbusLDBG_ << "Preset single register:@"<<dec<<in->regadd<<" value:x"<<hex<<value<<" slave:"<<dec<<in->slaveid;
 
             out->ret = driver->preset_single_register(in->regadd, value,in->slaveid);
             break;
@@ -202,7 +206,7 @@ cu_driver::MsgManagmentResultType::MsgManagmentResult  modbusDriver::execOpcode(
             
         case OP_FORCE_MULTIPLE_REGISTERS:{
             uint16_t* buf = (uint16_t*)(in+1);
-            modbusLDBG_ << "Force Multiple Registers:@"<<in->regadd<<" buf:x"<<hex<<buf<<" sizeb:"<<in->sizeb<<" slave:"<<dec<<in->slaveid;
+            modbusLDBG_ << "Force Multiple Registers:@"<<dec<<in->regadd<<" buf:x"<<hex<<buf<<" sizeb:"<<in->sizeb<<" slave:"<<dec<<in->slaveid;
 
             out->ret = driver->force_multiple_registers(in->regadd, in->sizeb,buf,in->slaveid);
             break;

@@ -108,18 +108,22 @@ void own::ModbusControlUnit::unitInit() throw(CException) {
         
         RangeValueInfo vi;
         getAttributeRangeValueInfo("slaveID", vi);
-        if(vi.defaultValue.size()!=0){
+        if(vi.defaultValue.size()==0){
               throw chaos::CException(1, "You must define a slaveID for the CU", __FUNCTION__);
         }
         slave_id = boost::lexical_cast<int>(vi.defaultValue);
         getAttributeRangeValueInfo("Register1",vi);
 
-        if(vi.defaultValue.size()!=0){
+        if(vi.defaultValue.size()==0){
               throw chaos::CException(1, "You must define a register value  for the CU", __FUNCTION__);
         }
         regadd = boost::lexical_cast<int>(vi.defaultValue);
         
         SCCUAPP << "CU slave:"<< slave_id <<" address:"<<regadd;
+         if(driver->connect()==false){
+             throw chaos::CException(1, "cannot perform modbus connect", __FUNCTION__);
+
+        }
         
    }
 

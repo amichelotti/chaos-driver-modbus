@@ -30,9 +30,10 @@ using namespace boost::msm::front;
 #define MAX_REGISTERS 16
 
 #define MODBUS_PUSH_FLOAT_REGISTER(REG_NAME,slave_id,driver,data) {\
-double fdata;\
-driver->read_input_registers(REG_NAME ## _REG,2,(uint16_t*)&fdata,slave_id);\
-data->addDoubleValue(#REG_NAME, fdata);}
+float fdata;\
+int ret;\
+ret=driver->read_input_registers(REG_NAME ## _REG,2,(uint16_t*)&fdata,slave_id);\
+if(ret>0){data->addDoubleValue(#REG_NAME, fdata);LDBG_ << "pushing " #REG_NAME << ":"<<fdata;} else {LAPP_<<" error reading " #REG_NAME " returned:"<<ret;}}
 
 namespace driver {
 	namespace modbus {
