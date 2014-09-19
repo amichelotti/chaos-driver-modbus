@@ -18,7 +18,7 @@ ADD_DEFINITIONS(-g -O2 -Wall)
 add_definitions(-DBOOST_ALL_DYN_LINK)
 
 SET(modbusdriver_src core/modbusDriver.cpp core/ChaosModbusInterface.cpp)
-SET(modbuscu_src source/main.cpp source/ModbusControlUnit.cpp ${modbusdriver_src})
+SET(modbuscu_src source/main.cpp source/ModbusControlUnit.cpp source/ModbusFemtoUnit.cpp ${modbusdriver_src})
 
 INCLUDE_DIRECTORIES(. ../../ ${PROJECT_SOURCE_DIR}/../../usr/local/include)
 LINK_DIRECTORIES(${PROJECT_SOURCE_DIR}/../../chaosframework/usr/local/lib)

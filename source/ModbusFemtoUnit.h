@@ -17,37 +17,33 @@
  *    	See the License for the specific language governing permissions and
  *    	limitations under the License.
  */
-#ifndef __PowerSupply__ModbusControlUnit__
-#define __PowerSupply__ModbusControlUnit__
+#ifndef __PowerSupply__ModbusFemtoUnit__
+#define __PowerSupply__ModbusFemtoUnit__
 
 #include <chaos/cu_toolkit/ControlManager/RTAbstractControlUnit.h>
 #include <driver/modbus/core/ChaosModbusInterface.h>
-
+#include "ModbusControlUnit.h"
 
 using namespace boost::msm::front::euml;
 using namespace boost::msm::front;
 //namespace mpl = boost::mpl;
 #define MAX_REGISTERS 16
-
-#define MODBUS_PUSH_FLOAT_REGISTER(REG_NAME,slave_id,driver,data) {\
-double fdata;\
-driver->read_input_registers(REG_NAME ## _REG,2,(uint16_t*)&fdata,slave_id);\
-data->addDoubleValue(#REG_NAME, fdata);}
-
 namespace driver {
 	namespace modbus {
 		
-		class ModbusControlUnit : public ::chaos::cu::control_manager::RTAbstractControlUnit {
-			PUBLISHABLE_CONTROL_UNIT_INTERFACE(ModbusControlUnit)
+		class ModbusFemtoUnit : public ModbusControlUnit {
+			PUBLISHABLE_CONTROL_UNIT_INTERFACE(ModbusFemtoUnit)
+
+			
+
 		protected:
-
-			// init paramter
-			string device_hw;
-			int slave_id;
-                        int regadd;
-                        
-                        chaos::driver::modbus::ChaosModbusInterface *driver;
-
+                    
+                    static const unsigned U1N_REG=220;
+                    static const unsigned U2N_REG=222;
+                    static const unsigned U3N_REG=224;
+                    static const unsigned I1_REG=232;
+                     static const unsigned I2_REG=234;
+                      static const unsigned I3_REG=236;
 			/*
 			 Define the Control Unit Dataset and Actions
 			 */
@@ -72,20 +68,20 @@ namespace driver {
 			 */
 			void unitDeinit() throw(chaos::CException);
             
-            void unitRun() throw(chaos::CException);
+                        void unitRun() throw(chaos::CException);
 			
 		public:
 			/*
 			 Construct a new CU with an identifier
 			 */
-			ModbusControlUnit(const string& _control_unit_id,
+			ModbusFemtoUnit(const string& _control_unit_id,
 									 const string& _control_unit_param,
 									 const ControlUnitDriverList& _control_unit_drivers);
 			
 			/*
 			 Base destructor
 			 */
-			~ModbusControlUnit();
+			~ModbusFemtoUnit();
 		};
 	}
 }

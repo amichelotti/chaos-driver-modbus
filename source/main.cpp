@@ -20,6 +20,7 @@
 
 #include <driver/modbus/core/modbusDriver.h>
 #include "ModbusControlUnit.h"
+#include "ModbusFemtoUnit.h"
 
 #include <chaos/common/chaos_constants.h>
 #include <chaos/cu_toolkit/ChaosCUToolkit.h>
@@ -66,7 +67,8 @@ int main (int argc, char* argv[] )
 		chaos::cu::driver_manager::driver::DrvRequestInfo drv1 = {"modbusDriver", "1.0.0", "" };
 		chaos::cu::control_manager::AbstractControlUnit::ControlUnitDriverList driver_list; driver_list.push_back(drv1);
 		ChaosCUToolkit::getInstance()->registerControlUnit< ::driver::modbus::ModbusControlUnit >();
-		
+		ChaosCUToolkit::getInstance()->registerControlUnit< ::driver::modbus::ModbusFemtoUnit >();
+
 		//! [Starting the Framework]
 		ChaosCUToolkit::getInstance()->start();
 		//! [Starting the Framework]

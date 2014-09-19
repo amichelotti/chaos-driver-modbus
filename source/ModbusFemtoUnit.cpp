@@ -1,5 +1,5 @@
 /*
- *	ModbusControlUnit
+ *	ModbusFemtoUnit
  *	!CHAOS
  *	Created by Andrea Michelotti
  *
@@ -18,7 +18,7 @@
  *    	limitations under the License.
  */
 
-#include "ModbusControlUnit.h"
+#include "ModbusFemtoUnit.h"
 #include <boost/format.hpp>
 #include <boost/lexical_cast.hpp>
 
@@ -31,18 +31,18 @@ using namespace chaos::cu::driver_manager::driver;
 
 namespace own =  ::driver::modbus;
 
-#define SCCUAPP LAPP_ << "[ModbusControlUnit - " << getCUID() << "] - "
+#define SCCUAPP LAPP_ << "[ModbusFemtoUnit - " << getCUID() << "] - "
 
-PUBLISHABLE_CONTROL_UNIT_IMPLEMENTATION(own::ModbusControlUnit)
+PUBLISHABLE_CONTROL_UNIT_IMPLEMENTATION(own::ModbusFemtoUnit)
 
 /*
  Construct a new CU with an identifier
  */
-own::ModbusControlUnit::ModbusControlUnit(const string& _control_unit_id,
+own::ModbusFemtoUnit::ModbusFemtoUnit(const string& _control_unit_id,
 														const string& _control_unit_param,
 														const ControlUnitDriverList& _control_unit_drivers):
 //call base constructor
-chaos::cu::control_manager::RTAbstractControlUnit(_control_unit_id,
+ModbusControlUnit(_control_unit_id,
 												  _control_unit_param,
 												  _control_unit_drivers){
     slave_id = -1;	
@@ -52,7 +52,7 @@ chaos::cu::control_manager::RTAbstractControlUnit(_control_unit_id,
 /*
  Base destructor
  */
-own::ModbusControlUnit::~ModbusControlUnit() {
+own::ModbusFemtoUnit::~ModbusFemtoUnit() {
 	
 }
 
@@ -60,7 +60,7 @@ own::ModbusControlUnit::~ModbusControlUnit() {
 /*
  Return the default configuration
  */
-void own::ModbusControlUnit::unitDefineActionAndDataset() throw(chaos::CException) {
+void own::ModbusFemtoUnit::unitDefineActionAndDataset() throw(chaos::CException) {
        //set it has default
     
     //setup the dataset
@@ -71,26 +71,48 @@ void own::ModbusControlUnit::unitDefineActionAndDataset() throw(chaos::CExceptio
     
    // example 
    
-     addAttributeToDataSet("Register1",
-                          "register1",
-                          DataType::TYPE_INT32,
-                          DataType::Input);
-   
-    
-    addAttributeToDataSet("Out1",
-                          "Register out",
+     addAttributeToDataSet("U1N",
+                          "Phase to Neutral Voltage1 RMS",
                           DataType::TYPE_DOUBLE,
                           DataType::Output);
+   
+      addAttributeToDataSet("U2N",
+                          "Phase to Neutral Voltage2 RMS",
+                          DataType::TYPE_DOUBLE,
+                          DataType::Output);
+    
+       addAttributeToDataSet("U3N",
+                          "Phase to Neutral Voltage3 RMS",
+                          DataType::TYPE_DOUBLE,
+                          DataType::Output);
+       
+       
+        addAttributeToDataSet("I1",
+                          "Phase current 1",
+                          DataType::TYPE_DOUBLE,
+                          DataType::Output);
+   
+      addAttributeToDataSet("I2",
+                          "Phase Current 2",
+                          DataType::TYPE_DOUBLE,
+                          DataType::Output);
+    
+       addAttributeToDataSet("I3",
+                          "Phase Current3",
+                          DataType::TYPE_DOUBLE,
+                          DataType::Output);
+       
+   
     
     
 }
 
-void own::ModbusControlUnit::defineSharedVariable() {
+void own::ModbusFemtoUnit::defineSharedVariable() {
 	
 }
 
 // Abstract method for the initialization of the control unit
-void own::ModbusControlUnit::unitInit() throw(CException) {
+void own::ModbusFemtoUnit::unitInit() throw(CException) {
 	SCCUAPP "unitInit";
     
     
@@ -111,31 +133,22 @@ void own::ModbusControlUnit::unitInit() throw(CException) {
         if(vi.defaultValue.size()!=0){
               throw chaos::CException(1, "You must define a slaveID for the CU", __FUNCTION__);
         }
-        slave_id = boost::lexical_cast<int>(vi.defaultValue);
-        getAttributeRangeValueInfo("Register1",vi);
-
-        if(vi.defaultValue.size()!=0){
-              throw chaos::CException(1, "You must define a register value  for the CU", __FUNCTION__);
-        }
-        regadd = boost::lexical_cast<int>(vi.defaultValue);
-        
-        SCCUAPP << "CU slave:"<< slave_id <<" address:"<<regadd;
+       
+        SCCUAPP << "CU slave:"<< slave_id <<regadd;
         
    }
 
-void own::ModbusControlUnit::unitRun() throw(CException) {
+void own::ModbusFemtoUnit::unitRun() throw(CException) {
     
     CDataWrapper *acquiredData = getNewDataWrapper();
     if(!acquiredData) return;
-     uint32_t data;
-     float* dataf=(float*)&data;
-     //assume 32 bit floating point registers
-     driver->read_input_registers(regadd,2,(uint16_t*)&data,slave_id);
-
     
-    //put the messageID for test the lost of package
-    acquiredData->addDoubleValue("Out1", *dataf);
-    
+    MODBUS_PUSH_FLOAT_REGISTER(U1N,slave_id,driver,acquiredData);
+    MODBUS_PUSH_FLOAT_REGISTER(U2N,slave_id,driver,acquiredData);
+    MODBUS_PUSH_FLOAT_REGISTER(U3N,slave_id,driver,acquiredData);
+    MODBUS_PUSH_FLOAT_REGISTER(I1,slave_id,driver,acquiredData);
+    MODBUS_PUSH_FLOAT_REGISTER(I2,slave_id,driver,acquiredData);
+    MODBUS_PUSH_FLOAT_REGISTER(I3,slave_id,driver,acquiredData);
     
     //submit acquired data
     pushDataSet(acquiredData);
@@ -143,16 +156,16 @@ void own::ModbusControlUnit::unitRun() throw(CException) {
 }
 
 // Abstract method for the start of the control unit
-void own::ModbusControlUnit::unitStart() throw(CException) {
+void own::ModbusFemtoUnit::unitStart() throw(CException) {
 	
 }
 
 // Abstract method for the stop of the control unit
-void own::ModbusControlUnit::unitStop() throw(CException) {
+void own::ModbusFemtoUnit::unitStop() throw(CException) {
 	
 }
 
 // Abstract method for the deinit of the control unit
-void own::ModbusControlUnit::unitDeinit() throw(CException) {
+void own::ModbusFemtoUnit::unitDeinit() throw(CException) {
 	
 }
