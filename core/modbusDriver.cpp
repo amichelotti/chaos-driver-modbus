@@ -57,33 +57,43 @@ modbusDriver::~modbusDriver() {
 void modbusDriver::driverInit(const char *initParameter) throw(chaos::CException) {
 	boost::smatch match;
 	std::string inputStr = initParameter;
-	LDBG_ << __FUNCTION__ <<" initialisation string:\""<<initParameter<<"\""<<endl;
+	LDBG_ << __FUNCTION__ <<" initialisation string:\""<<inputStr<<"\"";
     if(driver.get()){
         throw chaos::CException(1, "Already Initialised", __FUNCTION__);
     }
-    ::common::modbus::ModBusDrv* t=::common::modbus::ModBusDrv::getInstance(initParameter);
+    driver = ::common::modbus::ModBusDrv::getInstance(inputStr);
     
         
 
-    if(t == NULL){
+    if(driver.get() == NULL){
          throw chaos::CException(1, "Cannot allocate resources for Modbus driver", "modbusDriver::driverInit");
     }
 
-    if(t->initFromParams()<=0){
-        t->removeInstance();
-        
+    LDBG_ << __FUNCTION__ <<" driver count:"<<driver.use_count()<<" pointer:x"<<hex<<driver.get()<<dec;
+
+    if(driver->initFromParams()<=0){
+        driverDeinit();
         throw chaos::CException(1, "Cannot initialize modbus driver", "modbusDriver::driverInit");
     }
-    driver.reset(t);
+    
+     if(driver->connect()==false){
+         driverDeinit();
+         throw chaos::CException(1, "cannot perform modbus connect", __FUNCTION__);
+
+      }
     
 }
 
 void modbusDriver::driverDeinit() throw(chaos::CException) {
-	modbusLAPP_ << "Deinit modbus driver";
-    if(driver){
-        driver.reset();
-        driver=boost::shared_ptr< ::common::modbus::ModBusDrv>();
-    }
+    
+    LDBG_<< "Deinit modbus, deallocating driver x"<<hex<<driver.get()<<dec<<" that is used by :"<<driver.use_count()-1;
+    if(driver.use_count()==2){
+            ::common::modbus::ModBusDrv::removeInstance(driver);
+
+            driver.reset();
+            LDBG_<<"driver deallocated: "<<driver.use_count();
+     }
+    
 }
 
 cu_driver::MsgManagmentResultType::MsgManagmentResult  modbusDriver::execOpcode(cu_driver::DrvMsgPtr cmd){

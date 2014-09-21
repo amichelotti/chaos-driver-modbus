@@ -42,7 +42,7 @@ namespace driver {
 			void driverInit(const char *initParameter) throw(chaos::CException);
 			void driverDeinit() throw(chaos::CException);
 
-            boost::shared_ptr< ::common::modbus::AbstractModbus > driver;
+                 boost::shared_ptr<  ::common::modbus::ModBusDrv > driver;
            
 		public:
 			modbusDriver();

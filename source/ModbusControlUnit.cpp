@@ -120,10 +120,7 @@ void own::ModbusControlUnit::unitInit() throw(CException) {
         regadd = boost::lexical_cast<int>(vi.defaultValue);
         
         SCCUAPP << "CU slave:"<< slave_id <<" address:"<<regadd;
-         if(driver->connect()==false){
-             throw chaos::CException(1, "cannot perform modbus connect", __FUNCTION__);
-
-        }
+         
         
    }
 

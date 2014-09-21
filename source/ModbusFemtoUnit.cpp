@@ -135,10 +135,7 @@ void own::ModbusFemtoUnit::unitInit() throw(CException) {
         }
         slave_id =  boost::lexical_cast<int>(vi.defaultValue);
         SCCUAPP << "CU slave:"<< slave_id;
-        if(driver->connect()==false){
-             throw chaos::CException(1, "cannot perform modbus connect", __FUNCTION__);
-
-        }
+       
         
    }
 

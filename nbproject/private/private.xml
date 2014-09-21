@@ -14,6 +14,12 @@
             <file>file:/home/chaos/chaos_bundle_cnaf/driver/modbus/source/ModbusControlUnit.h</file>
             <file>file:/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.cpp</file>
             <file>file:/home/chaos/chaos_bundle_cnaf/driver/modbus/source/main.cpp</file>
+            <file>file:/home/chaos/chaos_bundle_cnaf/driver/modbus/source/ModbusFemtoUnit.h</file>
+            <file>file:/home/chaos/chaos_bundle_cnaf/driver/modbus/source/ModbusFemtoUnit.cpp</file>
+            <file>file:/home/chaos/chaos_bundle_cnaf/driver/modbus/CMakeLists.txt</file>
+            <file>file:/home/chaos/chaos_bundle_cnaf/driver/modbus/core/modbusDriver.cpp</file>
+            <file>file:/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.h</file>
+            <file>file:/home/chaos/chaos_bundle_cnaf/driver/modbus/core/modbusDriver.h</file>
         </group>
     </open-files>
 </project-private>

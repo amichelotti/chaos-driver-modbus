@@ -27,8 +27,6 @@
           <df name="source">
           </df>
         </df>
-        <df name="Progress">
-        </df>
       </df>
       <df name="core">
         <in>ChaosModbusInterface.cpp</in>
