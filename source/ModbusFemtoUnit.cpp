@@ -23,7 +23,7 @@
 #include <boost/lexical_cast.hpp>
 
 using namespace chaos;
-
+    
 using namespace chaos::common::data;
 using namespace chaos::common::batch_command;
 
@@ -102,7 +102,10 @@ void own::ModbusFemtoUnit::unitDefineActionAndDataset() throw(chaos::CException)
                           DataType::TYPE_DOUBLE,
                           DataType::Output);
        
-   
+   addAttributeToDataSet("E1",
+                          "Energy 1",
+                          DataType::TYPE_DOUBLE,
+                          DataType::Output);
     
     
 }
@@ -150,7 +153,8 @@ void own::ModbusFemtoUnit::unitRun() throw(CException) {
     MODBUS_PUSH_FLOAT_REGISTER(I1,slave_id,driver,acquiredData);
     MODBUS_PUSH_FLOAT_REGISTER(I2,slave_id,driver,acquiredData);
     MODBUS_PUSH_FLOAT_REGISTER(I3,slave_id,driver,acquiredData);
-    
+    MODBUS_PUSH_FLOAT_REGISTER(E1,slave_id,driver,acquiredData);
+
     //submit acquired data
     pushDataSet(acquiredData);
 	

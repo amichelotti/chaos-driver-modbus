@@ -43,7 +43,11 @@ namespace driver {
                     static const unsigned U3N_REG=225;
                     static const unsigned I1_REG=233;
                      static const unsigned I2_REG=235;
-                      static const unsigned I3_REG=237;
+                     static const unsigned I3_REG=237;
+                      
+                     // DA SOSTITUIRE
+                     static const unsigned E1_REG=239;
+
 			/*
 			 Define the Control Unit Dataset and Actions
 			 */
