@@ -33,8 +33,7 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <flagsDictionary>
-        <element flagsID="0" commonFlags="-O2"/>
-        <element flagsID="1" commonFlags="-fPIC -O2"/>
+        <element flagsID="0" commonFlags="-fPIC -O2"/>
       </flagsDictionary>
       <codeAssistance>
       </codeAssistance>
@@ -57,8 +56,6 @@
         </makeTool>
       </makefileType>
       <item path="core/ChaosModbusInterface.cpp" ex="false" tool="1" flavor2="4">
-        <ccTool flags="1">
-        </ccTool>
       </item>
       <item path="core/modbusDriver.cpp" ex="false" tool="1" flavor2="4">
       </item>

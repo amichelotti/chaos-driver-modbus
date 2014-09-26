@@ -38,6 +38,8 @@ PUBLISHABLE_CONTROL_UNIT_IMPLEMENTATION(own::ModbusFemtoUnit)
 /*
  Construct a new CU with an identifier
  */
+boost::mutex own::ModbusFemtoUnit::slock;
+
 own::ModbusFemtoUnit::ModbusFemtoUnit(const string& _control_unit_id,
 														const string& _control_unit_param,
 														const ControlUnitDriverList& _control_unit_drivers):
@@ -62,7 +64,8 @@ own::ModbusFemtoUnit::~ModbusFemtoUnit() {
  */
 void own::ModbusFemtoUnit::unitDefineActionAndDataset() throw(chaos::CException) {
        //set it has default
-    
+   setDefaultScheduleDelay(2000);
+
     //setup the dataset
    addAttributeToDataSet("slaveID",
                           "Slave ID",
@@ -145,8 +148,14 @@ void own::ModbusFemtoUnit::unitInit() throw(CException) {
 void own::ModbusFemtoUnit::unitRun() throw(CException) {
     
     CDataWrapper *acquiredData = getNewDataWrapper();
-    if(!acquiredData) return;
-    
+    if(!acquiredData) {
+         LDBG_<<" cannot allocate data ";
+
+        return;
+    }
+    boost::mutex::scoped_lock l(slock);
+    LDBG_<<" reading registers";
+    driver->connect();
     MODBUS_PUSH_FLOAT_REGISTER(U1N,slave_id,driver,acquiredData);
     MODBUS_PUSH_FLOAT_REGISTER(U2N,slave_id,driver,acquiredData);
     MODBUS_PUSH_FLOAT_REGISTER(U3N,slave_id,driver,acquiredData);
@@ -154,10 +163,12 @@ void own::ModbusFemtoUnit::unitRun() throw(CException) {
     MODBUS_PUSH_FLOAT_REGISTER(I2,slave_id,driver,acquiredData);
     MODBUS_PUSH_FLOAT_REGISTER(I3,slave_id,driver,acquiredData);
     MODBUS_PUSH_FLOAT_REGISTER(E1,slave_id,driver,acquiredData);
-
+    LDBG_<<" submitting";
     //submit acquired data
     pushDataSet(acquiredData);
-	
+    driver->close();
+    LDBG_<<"end cycle";
+
 }
 
 // Abstract method for the start of the control unit

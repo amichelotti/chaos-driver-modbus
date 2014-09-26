@@ -5,21 +5,19 @@
       <df name="build">
       </df>
       <df name="CMakeFiles">
+        <df name="2.8.12.2">
+          <df name="CompilerIdC">
+            <in>CMakeCCompilerId.c</in>
+          </df>
+          <df name="CompilerIdCXX">
+            <in>CMakeCXXCompilerId.cpp</in>
+          </df>
+        </df>
         <df name="chaos_modbus.dir">
           <df name="core">
           </df>
         </df>
         <df name="CMakeTmp">
-          <df name="CMakeFiles">
-            <df name="cmTryCompileExec.dir">
-            </df>
-          </df>
-        </df>
-        <df name="CompilerIdC">
-          <in>CMakeCCompilerId.c</in>
-        </df>
-        <df name="CompilerIdCXX">
-          <in>CMakeCXXCompilerId.cpp</in>
         </df>
         <df name="modbusControlUnit.dir">
           <df name="core">
@@ -90,16 +88,15 @@
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}"  --metadata-server localhost:5000 --log-on-console --unit_server_alias MODBUS-`hostname` --unit_server_enable true --log-level debug</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}"  --metadata-server localhost:5000 --log-on-console --unit_server_alias MODBUS-vldevelcld001 --unit_server_enable true --log-level debug</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"  --metadata-server localhost:5000 --log-on-console --unit_server_alias MODBUS --unit_server_enable true --log-level debug</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}"  --metadata-server localhost:5000 --log-on-console --unit_server_alias MODBUS-vldevelcld001 --unit_server_enable true --log-level debug</runcommand>
+        <runcommand>"${OUTPUT_PATH}"  --metadata-server localhost:5000 --log-on-console --unit_server_alias MODBUS --unit_server_enable true --log-level debug</runcommand>
         <rundir>.</rundir>
         <buildfirst>true</buildfirst>
         <console-type>2</console-type>
         <terminal-type>0</terminal-type>
         <remove-instrumentation>0</remove-instrumentation>
         <environment>
-          <variable name="LD_LIBRARY_PATH"
-                    value="/home/chaos/chaos_bundle_cnaf/usr/local/lib"/>
         </environment>
       </runprofile>
     </conf>

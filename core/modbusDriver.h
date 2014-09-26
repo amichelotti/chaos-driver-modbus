@@ -27,6 +27,8 @@
 #include <driver/modbus/core/ChaosModbusInterface.h>
 #include <common/modbus/modbus.h>
 #include <boost/shared_ptr.hpp>
+#include <boost/thread/mutex.hpp>
+
 //this need to be out the nasmespace
 DEFINE_CU_DRIVER_DEFINITION_PROTOTYPE(modbusDriver)
 namespace chaos{
@@ -43,7 +45,8 @@ namespace driver {
 			void driverDeinit() throw(chaos::CException);
 
                  boost::shared_ptr<  ::common::modbus::ModBusDrv > driver;
-           
+                 boost::mutex lock;
+                 
 		public:
 			modbusDriver();
 			~modbusDriver();

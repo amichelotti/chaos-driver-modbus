@@ -30,7 +30,6 @@
 
 
 
-
 //GET_PLUGIN_CLASS_DEFINITION
 //we need only to define the driver because we don't are makeing a plugin
 OPEN_CU_DRIVER_PLUGIN_CLASS_DEFINITION(modbusDriver, 1.0.0, chaos::driver::modbus::modbusDriver)
@@ -97,6 +96,7 @@ void modbusDriver::driverDeinit() throw(chaos::CException) {
 }
 
 cu_driver::MsgManagmentResultType::MsgManagmentResult  modbusDriver::execOpcode(cu_driver::DrvMsgPtr cmd){
+    boost::mutex::scoped_lock my_lock(lock);
     cu_driver::MsgManagmentResultType::MsgManagmentResult result = cu_driver::MsgManagmentResultType::MMR_EXECUTED;
     chaos::driver::modbus::modbus_iparams_t * in= (chaos::driver::modbus::modbus_iparams_t *) cmd->inputData;
     chaos::driver::modbus::modbus_oparams_t * out =(chaos::driver::modbus::modbus_oparams_t *) cmd->resultData;
@@ -117,6 +117,12 @@ cu_driver::MsgManagmentResultType::MsgManagmentResult  modbusDriver::execOpcode(
                 modbusLDBG_ << "FAILED";
 
             }
+            break;
+            
+            case OP_CLOSE:
+            modbusLDBG_ << "Closing..";
+            driver->close();
+            
             break;
         case OP_FLUSH:
             modbusLDBG_ << "Flushing data..";
