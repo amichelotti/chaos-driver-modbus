@@ -109,6 +109,16 @@ void own::ModbusFemtoUnit::unitDefineActionAndDataset() throw(chaos::CException)
                           "Energy 1",
                           DataType::TYPE_DOUBLE,
                           DataType::Output);
+   
+   addAttributeToDataSet("PFS",
+                          "Total Power Factor",
+                          DataType::TYPE_DOUBLE, 
+                          DataType::Output);
+   
+   addAttributeToDataSet("PS",
+                          "Total Power Active",
+                           DataType::TYPE_DOUBLE,
+                           DataType::Output);
     
     
 }
@@ -154,7 +164,7 @@ void own::ModbusFemtoUnit::unitRun() throw(CException) {
         return;
     }
     boost::mutex::scoped_lock l(slock);
-    LDBG_<<" reading registers";
+
     driver->connect();
     MODBUS_PUSH_FLOAT_REGISTER(U1N,slave_id,driver,acquiredData);
     MODBUS_PUSH_FLOAT_REGISTER(U2N,slave_id,driver,acquiredData);
@@ -163,11 +173,13 @@ void own::ModbusFemtoUnit::unitRun() throw(CException) {
     MODBUS_PUSH_FLOAT_REGISTER(I2,slave_id,driver,acquiredData);
     MODBUS_PUSH_FLOAT_REGISTER(I3,slave_id,driver,acquiredData);
     MODBUS_PUSH_FLOAT_REGISTER(E1,slave_id,driver,acquiredData);
-    LDBG_<<" submitting";
+    MODBUS_PUSH_FLOAT_REGISTER(PFS,slave_id,driver,acquiredData);
+    MODBUS_PUSH_FLOAT_REGISTER(PS,slave_id,driver,acquiredData);
+
     //submit acquired data
     pushDataSet(acquiredData);
     driver->close();
-    LDBG_<<"end cycle";
+
 
 }
 
