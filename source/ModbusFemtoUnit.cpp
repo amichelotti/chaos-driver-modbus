@@ -119,8 +119,16 @@ void own::ModbusFemtoUnit::unitDefineActionAndDataset() throw(chaos::CException)
                           "Total Power Active",
                            DataType::TYPE_DOUBLE,
                            DataType::Output);
+   
+   addAttributeToDataSet("TIMES",
+                          "Life Time",
+                           DataType::TYPE_INT32,
+                           DataType::Output);
     
-    
+    addAttributeToDataSet("EAS",
+                          "Total imported active",
+                           DataType::TYPE_INT32,
+                           DataType::Output);
 }
 
 void own::ModbusFemtoUnit::defineSharedVariable() {
@@ -166,15 +174,19 @@ void own::ModbusFemtoUnit::unitRun() throw(CException) {
     boost::mutex::scoped_lock l(slock);
 
     driver->connect();
-    MODBUS_PUSH_FLOAT_REGISTER(U1N,slave_id,driver,acquiredData);
-    MODBUS_PUSH_FLOAT_REGISTER(U2N,slave_id,driver,acquiredData);
-    MODBUS_PUSH_FLOAT_REGISTER(U3N,slave_id,driver,acquiredData);
-    MODBUS_PUSH_FLOAT_REGISTER(I1,slave_id,driver,acquiredData);
-    MODBUS_PUSH_FLOAT_REGISTER(I2,slave_id,driver,acquiredData);
-    MODBUS_PUSH_FLOAT_REGISTER(I3,slave_id,driver,acquiredData);
-    MODBUS_PUSH_FLOAT_REGISTER(E1,slave_id,driver,acquiredData);
-    MODBUS_PUSH_FLOAT_REGISTER(PFS,slave_id,driver,acquiredData);
-    MODBUS_PUSH_FLOAT_REGISTER(PS,slave_id,driver,acquiredData);
+    MODBUS_PUSH_FLOAT_REGISTER(U1N,slave_id,driver,1,1.0,acquiredData);
+    MODBUS_PUSH_FLOAT_REGISTER(U2N,slave_id,driver,1,1.0,acquiredData);
+    MODBUS_PUSH_FLOAT_REGISTER(U3N,slave_id,driver,1,1.0,acquiredData);
+    MODBUS_PUSH_FLOAT_REGISTER(I1,slave_id,driver,1,1.0,acquiredData);
+    MODBUS_PUSH_FLOAT_REGISTER(I2,slave_id,driver,1,1.0,acquiredData);
+    MODBUS_PUSH_FLOAT_REGISTER(I3,slave_id,driver,1,1.0,acquiredData);
+    MODBUS_PUSH_FLOAT_REGISTER(E1,slave_id,driver,1,1.0,acquiredData);
+    MODBUS_PUSH_FLOAT_REGISTER(PFS,slave_id,driver,1,1.0,acquiredData);
+    MODBUS_PUSH_FLOAT_REGISTER(PS,slave_id,driver,1,1.0,acquiredData);
+    
+     MODBUS_PUSH_UNSIGNED_REGISTER(TIMES,slave_id,driver,1,1.0,acquiredData);
+     MODBUS_PUSH_UNSIGNED_REGISTER(EAS,slave_id,driver,1,0.01,acquiredData);
+
 
     //submit acquired data
     pushDataSet(acquiredData);

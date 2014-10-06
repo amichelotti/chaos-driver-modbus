@@ -29,11 +29,21 @@ using namespace boost::msm::front;
 //namespace mpl = boost::mpl;
 #define MAX_REGISTERS 16
 
-#define MODBUS_PUSH_FLOAT_REGISTER(REG_NAME,slave_id,driver,data) {\
-float fdata;\
+#define MODBUS_PUSH_UNSIGNED_REGISTER(REG_NAME,slave_id,driver,swap,factor,data) {\
+uint16_t data16[2];\
+uint32_t* fdata=(uint32_t*)data16;\
 int ret;\
-ret=driver->read_input_registers(REG_NAME ## _REG,2,(uint16_t*)&fdata,slave_id);\
-if(ret>0){data->addDoubleValue(#REG_NAME, fdata);LDBG_ << "pushing " #REG_NAME << ":"<<fdata;} else {LAPP_<<" error reading " #REG_NAME " returned:"<<ret;}}
+ret=driver->read_input_registers(REG_NAME ## _REG,2,data16,slave_id);\
+if(swap){uint16_t tmp = data16[0];data16[0]=data16[1];data16[1]=tmp;}\
+if(ret>0){data->addInt32Value(#REG_NAME, (uint32_t)(((float)*fdata)*factor));LDBG_ << "pushing " #REG_NAME << ":"<<*fdata*factor;} else {LAPP_<<" error reading " #REG_NAME " returned:"<<ret;}}
+
+#define MODBUS_PUSH_FLOAT_REGISTER(REG_NAME,slave_id,driver,swap,factor,data) {\
+uint16_t data16[2];\
+float* fdata=(float*)data16;\
+int ret;\
+ret=driver->read_input_registers(REG_NAME ## _REG,2,data16,slave_id);\
+if(swap){uint16_t tmp = data16[0];data16[0]=data16[1];data16[1]=tmp;}\
+if(ret>0){data->addDoubleValue(#REG_NAME, *fdata * factor);LDBG_ << "pushing " #REG_NAME << ":"<<*fdata*factor;} else {LAPP_<<" error reading " #REG_NAME " returned:"<<ret;}}
 
 namespace driver {
 	namespace modbus {

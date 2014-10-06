@@ -38,16 +38,19 @@ namespace driver {
 
 		protected:
                     
-                    static const unsigned U1N_REG=221;
-                    static const unsigned U2N_REG=223;
-                    static const unsigned U3N_REG=225;
-                    static const unsigned I1_REG=233;
-                    static const unsigned I2_REG=235;
-                    static const unsigned I3_REG=237;
+                    static const unsigned U1N_REG=220;
+                    static const unsigned U2N_REG=222;
+                    static const unsigned U3N_REG=224;
+                    static const unsigned I1_REG=232;
+                    static const unsigned I2_REG=234;
+                    static const unsigned I3_REG=236;
                     
-                    static const unsigned PFS_REG=283;
-                    static const unsigned PS_REG=277;
-                     
+                    static const unsigned PFS_REG=282;
+                    static const unsigned PS_REG=276;
+                    
+                   static const unsigned TIMES_REG=400;
+                    static const unsigned EAS_REG=412;
+
                       
                      // DA SOSTITUIRE
                      static const unsigned E1_REG=239;
