@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3262591019F7DDB900400464 /* ModbusFemtoUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3262590E19F7DDB900400464 /* ModbusFemtoUnit.cpp */; };
 		3285569117F1C4C700A64ED2 /* ModbusControlUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3285568B17F1C4C700A64ED2 /* ModbusControlUnit.cpp */; };
 		3285569417F1C4C700A64ED2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3285569017F1C4C700A64ED2 /* main.cpp */; };
 		532C9C0419B9E9DB00F097C4 /* modbusDriver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 532C9C0019B9E9DB00F097C4 /* modbusDriver.cpp */; };
@@ -38,6 +39,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3262590E19F7DDB900400464 /* ModbusFemtoUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ModbusFemtoUnit.cpp; path = source/ModbusFemtoUnit.cpp; sourceTree = SOURCE_ROOT; };
+		3262590F19F7DDB900400464 /* ModbusFemtoUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModbusFemtoUnit.h; path = source/ModbusFemtoUnit.h; sourceTree = SOURCE_ROOT; };
 		3285567717F1C43D00A64ED2 /* modbusControlUnit */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = modbusControlUnit; sourceTree = BUILT_PRODUCTS_DIR; };
 		3285568717F1C4AC00A64ED2 /* libchaos_modbus.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libchaos_modbus.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		3285568B17F1C4C700A64ED2 /* ModbusControlUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ModbusControlUnit.cpp; path = source/ModbusControlUnit.cpp; sourceTree = SOURCE_ROOT; };
@@ -93,6 +96,8 @@
 				532C9C0319B9E9DB00F097C4 /* modbusDriver.h */,
 				3285568B17F1C4C700A64ED2 /* ModbusControlUnit.cpp */,
 				3285568C17F1C4C700A64ED2 /* ModbusControlUnit.h */,
+				3262590E19F7DDB900400464 /* ModbusFemtoUnit.cpp */,
+				3262590F19F7DDB900400464 /* ModbusFemtoUnit.h */,
 				3285569017F1C4C700A64ED2 /* main.cpp */,
 			);
 			path = Driver;
@@ -180,6 +185,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3262591019F7DDB900400464 /* ModbusFemtoUnit.cpp in Sources */,
 				3285569417F1C4C700A64ED2 /* main.cpp in Sources */,
 				3285569117F1C4C700A64ED2 /* ModbusControlUnit.cpp in Sources */,
 			);

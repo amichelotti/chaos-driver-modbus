@@ -28,6 +28,7 @@ using namespace boost::msm::front::euml;
 using namespace boost::msm::front;
 //namespace mpl = boost::mpl;
 #define MAX_REGISTERS 16
+namespace chaos{
 namespace driver {
 	namespace modbus {
 		
@@ -97,5 +98,5 @@ namespace driver {
 		};
 	}
 }
-
+}
 #endif /* defined(__PowerSupply__ModbusControlUnit__) */

@@ -35,7 +35,7 @@ uint32_t* fdata=(uint32_t*)data16;\
 int ret;\
 ret=driver->read_input_registers(REG_NAME ## _REG,2,data16,slave_id);\
 if(swap){uint16_t tmp = data16[0];data16[0]=data16[1];data16[1]=tmp;}\
-if(ret>0){data->addInt32Value(#REG_NAME, (uint32_t)(((float)*fdata)*factor));LDBG_ << "pushing " #REG_NAME << ":"<<*fdata*factor;} else {LAPP_<<" error reading " #REG_NAME " returned:"<<ret;}}
+if(ret>0){*data = (uint32_t)(((float)*fdata)*factor);LDBG_ << "pushing " #REG_NAME << ":"<<*data;} else {LAPP_<<" error reading " #REG_NAME " returned:"<<ret;}}
 
 #define MODBUS_PUSH_FLOAT_REGISTER(REG_NAME,slave_id,driver,swap,factor,data) {\
 uint16_t data16[2];\
@@ -43,61 +43,63 @@ float* fdata=(float*)data16;\
 int ret;\
 ret=driver->read_input_registers(REG_NAME ## _REG,2,data16,slave_id);\
 if(swap){uint16_t tmp = data16[0];data16[0]=data16[1];data16[1]=tmp;}\
-if(ret>0){data->addDoubleValue(#REG_NAME, *fdata * factor);LDBG_ << "pushing " #REG_NAME << ":"<<*fdata*factor;} else {LAPP_<<" error reading " #REG_NAME " returned:"<<ret;}}
-
-namespace driver {
-	namespace modbus {
-		
-		class ModbusControlUnit : public ::chaos::cu::control_manager::RTAbstractControlUnit {
-			PUBLISHABLE_CONTROL_UNIT_INTERFACE(ModbusControlUnit)
-		protected:
-
-			// init paramter
-			string device_hw;
-			int slave_id;
-                        int regadd;
-                        
-                        chaos::driver::modbus::ChaosModbusInterface *driver;
-
-			/*
-			 Define the Control Unit Dataset and Actions
-			 */
-			void unitDefineActionAndDataset()throw(chaos::CException);
+if(ret>0){*data = (*fdata * factor);LDBG_ << "pushing " #REG_NAME << ":"<<*data;} else {LAPP_<<" error reading " #REG_NAME " returned:"<<ret;}}
+namespace chaos{
+	namespace driver {
+		namespace modbus {
 			
-			void defineSharedVariable();
-
-			/*(Optional)
-			 Initialize the Control Unit and all driver, with received param from MetadataServer
-			 */
-			void unitInit() throw(chaos::CException);
-			/*(Optional)
-			 Execute the work, this is called with a determinated delay, it must be as fast as possible
-			 */
-			void unitStart() throw(chaos::CException);
-			/*(Optional)
-			 The Control Unit will be stopped
-			 */
-			void unitStop() throw(chaos::CException);
-			/*(Optional)
-			 The Control Unit will be deinitialized and disposed
-			 */
-			void unitDeinit() throw(chaos::CException);
-            
-            void unitRun() throw(chaos::CException);
-			
-		public:
-			/*
-			 Construct a new CU with an identifier
-			 */
-			ModbusControlUnit(const string& _control_unit_id,
-									 const string& _control_unit_param,
-									 const ControlUnitDriverList& _control_unit_drivers);
-			
-			/*
-			 Base destructor
-			 */
-			~ModbusControlUnit();
-		};
+			class ModbusControlUnit : public ::chaos::cu::control_manager::RTAbstractControlUnit {
+				PUBLISHABLE_CONTROL_UNIT_INTERFACE(ModbusControlUnit)
+				
+			protected:
+				double *o_out_1;
+				
+				// init paramter
+				string device_hw;
+				int slave_id;
+				int regadd;
+				
+				chaos::driver::modbus::ChaosModbusInterface *driver;
+				
+				/*
+				 Define the Control Unit Dataset and Actions
+				 */
+				void unitDefineActionAndDataset()throw(chaos::CException);
+				
+				/*(Optional)
+				 Initialize the Control Unit and all driver, with received param from MetadataServer
+				 */
+				void unitInit() throw(chaos::CException);
+				/*(Optional)
+				 Execute the work, this is called with a determinated delay, it must be as fast as possible
+				 */
+				void unitStart() throw(chaos::CException);
+				/*(Optional)
+				 The Control Unit will be stopped
+				 */
+				void unitStop() throw(chaos::CException);
+				/*(Optional)
+				 The Control Unit will be deinitialized and disposed
+				 */
+				void unitDeinit() throw(chaos::CException);
+				
+				void unitRun() throw(chaos::CException);
+				
+				void unitInputAttributeChangedHandler() throw(chaos::CException);
+			public:
+				/*
+				 Construct a new CU with an identifier
+				 */
+				ModbusControlUnit(const string& _control_unit_id,
+								  const string& _control_unit_param,
+								  const ControlUnitDriverList& _control_unit_drivers);
+				
+				/*
+				 Base destructor
+				 */
+				~ModbusControlUnit();
+			};
+		}
 	}
 }
 

@@ -66,8 +66,8 @@ int main (int argc, char* argv[] )
         // initiali
 		chaos::cu::driver_manager::driver::DrvRequestInfo drv1 = {"modbusDriver", "1.0.0", "" };
 		chaos::cu::control_manager::AbstractControlUnit::ControlUnitDriverList driver_list; driver_list.push_back(drv1);
-		ChaosCUToolkit::getInstance()->registerControlUnit< ::driver::modbus::ModbusControlUnit >();
-		ChaosCUToolkit::getInstance()->registerControlUnit< ::driver::modbus::ModbusFemtoUnit >();
+		ChaosCUToolkit::getInstance()->registerControlUnit< chaos::driver::modbus::ModbusControlUnit >();
+		ChaosCUToolkit::getInstance()->registerControlUnit< chaos::driver::modbus::ModbusFemtoUnit >();
 
 		//! [Starting the Framework]
 		ChaosCUToolkit::getInstance()->start();
