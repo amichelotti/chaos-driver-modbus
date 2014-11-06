@@ -25,11 +25,12 @@
 using namespace chaos;
     
 using namespace chaos::common::data;
+using namespace chaos::common::data::cache;
 using namespace chaos::common::batch_command;
 
 using namespace chaos::cu::driver_manager::driver;
 
-namespace own =  ::driver::modbus;
+namespace own =  chaos::driver::modbus;
 
 #define SCCUAPP LAPP_ << "[ModbusFemtoUnit - " << getCUID() << "] - "
 
@@ -72,7 +73,7 @@ void own::ModbusFemtoUnit::unitDefineActionAndDataset() throw(chaos::CException)
                           DataType::TYPE_INT32,
                           DataType::Input);
     
-   // example 
+   // output
    
      addAttributeToDataSet("U1N",
                           "Phase to Neutral Voltage1 RMS",
@@ -164,32 +165,49 @@ void own::ModbusFemtoUnit::unitInit() throw(CException) {
    }
 
 void own::ModbusFemtoUnit::unitRun() throw(CException) {
-    
-    CDataWrapper *acquiredData = getNewDataWrapper();
-    if(!acquiredData) {
-         LDBG_<<" cannot allocate data ";
-
-        return;
-    }
     boost::mutex::scoped_lock l(slock);
 
     driver->connect();
-    MODBUS_PUSH_FLOAT_REGISTER(U1N,slave_id,driver,1,1.0,acquiredData);
-    MODBUS_PUSH_FLOAT_REGISTER(U2N,slave_id,driver,1,1.0,acquiredData);
-    MODBUS_PUSH_FLOAT_REGISTER(U3N,slave_id,driver,1,1.0,acquiredData);
-    MODBUS_PUSH_FLOAT_REGISTER(I1,slave_id,driver,1,1.0,acquiredData);
-    MODBUS_PUSH_FLOAT_REGISTER(I2,slave_id,driver,1,1.0,acquiredData);
-    MODBUS_PUSH_FLOAT_REGISTER(I3,slave_id,driver,1,1.0,acquiredData);
-    MODBUS_PUSH_FLOAT_REGISTER(E1,slave_id,driver,1,1.0,acquiredData);
-    MODBUS_PUSH_FLOAT_REGISTER(PFS,slave_id,driver,1,1.0,acquiredData);
-    MODBUS_PUSH_FLOAT_REGISTER(PS,slave_id,driver,1,1.0,acquiredData);
-    
-     MODBUS_PUSH_UNSIGNED_REGISTER(TIMES,slave_id,driver,1,1.0,acquiredData);
-     MODBUS_PUSH_UNSIGNED_REGISTER(EAS,slave_id,driver,1,0.01,acquiredData);
-
-
+	
+	double *o_U1N = getAttributeCache()->getRWPtr<double>(AttributeValueSharedCache::SVD_OUTPUT, "U1N");
+	
+	double *o_U2N = getAttributeCache()->getRWPtr<double>(AttributeValueSharedCache::SVD_OUTPUT, "U2N");
+	
+	double *o_U3N = getAttributeCache()->getRWPtr<double>(AttributeValueSharedCache::SVD_OUTPUT, "U3N");
+	
+	
+	double *o_I1 = getAttributeCache()->getRWPtr<double>(AttributeValueSharedCache::SVD_OUTPUT, "I1");
+	
+	double *o_I2 = getAttributeCache()->getRWPtr<double>(AttributeValueSharedCache::SVD_OUTPUT, "I2");
+	
+	double *o_I3 = getAttributeCache()->getRWPtr<double>(AttributeValueSharedCache::SVD_OUTPUT, "I3");
+	
+	double *o_E1 = getAttributeCache()->getRWPtr<double>(AttributeValueSharedCache::SVD_OUTPUT, "E1");
+	
+	double *o_PFS = getAttributeCache()->getRWPtr<double>(AttributeValueSharedCache::SVD_OUTPUT, "PFS");
+	
+	double *o_PS = getAttributeCache()->getRWPtr<double>(AttributeValueSharedCache::SVD_OUTPUT, "PS");
+	
+	int32_t *o_TIMES = getAttributeCache()->getRWPtr<int32_t>(AttributeValueSharedCache::SVD_OUTPUT, "TIMES");
+	
+	int32_t *o_EAS = getAttributeCache()->getRWPtr<int32_t>(AttributeValueSharedCache::SVD_OUTPUT, "EAS");
+	
+    MODBUS_PUSH_FLOAT_REGISTER(U1N,slave_id,driver,1,1.0,o_U1N);
+    MODBUS_PUSH_FLOAT_REGISTER(U2N,slave_id,driver,1,1.0,o_U2N);
+    MODBUS_PUSH_FLOAT_REGISTER(U3N,slave_id,driver,1,1.0,o_U3N);
+    MODBUS_PUSH_FLOAT_REGISTER(I1,slave_id,driver,1,1.0,o_I1);
+    MODBUS_PUSH_FLOAT_REGISTER(I2,slave_id,driver,1,1.0,o_I2);
+    MODBUS_PUSH_FLOAT_REGISTER(I3,slave_id,driver,1,1.0,o_I3);
+    MODBUS_PUSH_FLOAT_REGISTER(E1,slave_id,driver,1,1.0,o_E1);
+    MODBUS_PUSH_FLOAT_REGISTER(PFS,slave_id,driver,1,1.0,o_PFS);
+    MODBUS_PUSH_FLOAT_REGISTER(PS,slave_id,driver,1,1.0,o_PS);
+	
+	MODBUS_PUSH_UNSIGNED_REGISTER(TIMES,slave_id,driver,1,1.0,o_TIMES);
+	MODBUS_PUSH_UNSIGNED_REGISTER(EAS,slave_id,driver,1,0.01,o_EAS);
+	
+	//notify change on cache
+	getAttributeCache()->setOutputDomainAsChanged();
     //submit acquired data
-    pushDataSet(acquiredData);
     driver->close();
 
 
