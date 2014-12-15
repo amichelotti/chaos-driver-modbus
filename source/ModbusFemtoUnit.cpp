@@ -169,28 +169,28 @@ void own::ModbusFemtoUnit::unitRun() throw(CException) {
 
     driver->connect();
 	
-	double *o_U1N = getAttributeCache()->getRWPtr<double>(AttributeValueSharedCache::SVD_OUTPUT, "U1N");
+	double *o_U1N = getAttributeCache()->getRWPtr<double>(DOMAIN_OUTPUT, "U1N");
 	
-	double *o_U2N = getAttributeCache()->getRWPtr<double>(AttributeValueSharedCache::SVD_OUTPUT, "U2N");
+	double *o_U2N = getAttributeCache()->getRWPtr<double>(DOMAIN_OUTPUT, "U2N");
 	
-	double *o_U3N = getAttributeCache()->getRWPtr<double>(AttributeValueSharedCache::SVD_OUTPUT, "U3N");
+	double *o_U3N = getAttributeCache()->getRWPtr<double>(DOMAIN_OUTPUT, "U3N");
 	
 	
-	double *o_I1 = getAttributeCache()->getRWPtr<double>(AttributeValueSharedCache::SVD_OUTPUT, "I1");
+	double *o_I1 = getAttributeCache()->getRWPtr<double>(DOMAIN_OUTPUT, "I1");
 	
-	double *o_I2 = getAttributeCache()->getRWPtr<double>(AttributeValueSharedCache::SVD_OUTPUT, "I2");
+	double *o_I2 = getAttributeCache()->getRWPtr<double>(DOMAIN_OUTPUT, "I2");
 	
-	double *o_I3 = getAttributeCache()->getRWPtr<double>(AttributeValueSharedCache::SVD_OUTPUT, "I3");
+	double *o_I3 = getAttributeCache()->getRWPtr<double>(DOMAIN_OUTPUT, "I3");
 	
-	double *o_E1 = getAttributeCache()->getRWPtr<double>(AttributeValueSharedCache::SVD_OUTPUT, "E1");
+	double *o_E1 = getAttributeCache()->getRWPtr<double>(DOMAIN_OUTPUT, "E1");
 	
-	double *o_PFS = getAttributeCache()->getRWPtr<double>(AttributeValueSharedCache::SVD_OUTPUT, "PFS");
+	double *o_PFS = getAttributeCache()->getRWPtr<double>(DOMAIN_OUTPUT, "PFS");
 	
-	double *o_PS = getAttributeCache()->getRWPtr<double>(AttributeValueSharedCache::SVD_OUTPUT, "PS");
+	double *o_PS = getAttributeCache()->getRWPtr<double>(DOMAIN_OUTPUT, "PS");
 	
-	int32_t *o_TIMES = getAttributeCache()->getRWPtr<int32_t>(AttributeValueSharedCache::SVD_OUTPUT, "TIMES");
+	int32_t *o_TIMES = getAttributeCache()->getRWPtr<int32_t>(DOMAIN_OUTPUT, "TIMES");
 	
-	int32_t *o_EAS = getAttributeCache()->getRWPtr<int32_t>(AttributeValueSharedCache::SVD_OUTPUT, "EAS");
+	int32_t *o_EAS = getAttributeCache()->getRWPtr<int32_t>(DOMAIN_OUTPUT, "EAS");
 	
     MODBUS_PUSH_FLOAT_REGISTER(U1N,slave_id,driver,1,1.0,o_U1N);
     MODBUS_PUSH_FLOAT_REGISTER(U2N,slave_id,driver,1,1.0,o_U2N);

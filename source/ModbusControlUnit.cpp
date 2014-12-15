@@ -120,7 +120,7 @@ void own::ModbusControlUnit::unitInit() throw(CException) {
 	
 	SCCUAPP << "CU slave:"<< slave_id <<" address:"<<regadd;
 	
-	o_out_1 = getAttributeCache()->getRWPtr<double>(chaos::common::data::cache::AttributeValueSharedCache::SVD_OUTPUT, "sinWave");
+	o_out_1 = getAttributeCache()->getRWPtr<double>(chaos::common::data::cache::DOMAIN_OUTPUT, "sinWave");
 }
 
 void own::ModbusControlUnit::unitRun() throw(CException) {
