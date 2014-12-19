@@ -1,38 +1,30 @@
 cmake_minimum_required(VERSION 2.6)
-option(BUILD_FORCE_32 "Set to ON to enable 32 bit compilation" OFF)
-
-
-IF( ($ENV{CHAOS32}) OR (BUILD_FORCE_32) )
-    MESSAGE(STATUS "Enabling 32 bit Compilation")
-    set (CMAKE_C_FLAGS "-m32")
-    set (CMAKE_CXX_FLAGS "-m32")
-    set (CMAKE_LINK_FLAGS "-m32")
-ENDIF()
-
-set (CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/../../usr/local)
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build)
-
-ADD_DEFINITIONS(-g -O2 -Wall)
-add_definitions(-DBOOST_ALL_DYN_LINK)
+include($ENV{CHAOS_BUNDLE}/tools/project_template/CMakeChaos.txt)
 
 SET(modbusdriver_src core/modbusDriver.cpp core/ChaosModbusInterface.cpp)
 SET(modbuscu_src source/main.cpp source/ModbusControlUnit.cpp source/ModbusFemtoUnit.cpp ${modbusdriver_src})
 
-INCLUDE_DIRECTORIES(. ../../ ${PROJECT_SOURCE_DIR}/../../usr/local/include)
-LINK_DIRECTORIES(${PROJECT_SOURCE_DIR}/../../chaosframework/usr/local/lib)
+
+IF(BUILD_FORCE_STATIC)
+  ADD_LIBRARY(chaos_modbus STATIC ${modbusdriver_src})
+ELSE()
+  
+  ADD_LIBRARY(chaos_modbus SHARED ${modbusdriver_src})
+ENDIF()
 
 ADD_EXECUTABLE(modbusControlUnit ${modbuscu_src})
-ADD_LIBRARY(chaos_modbus SHARED ${modbusdriver_src})
 
 
-TARGET_LINK_LIBRARIES(modbusControlUnit pthread chaos_cutoolkit chaos_common boost_program_options boost_system boost_thread boost_chrono boost_regex boost_log boost_log_setup boost_atomic memcached common_modbus)
-TARGET_LINK_LIBRARIES(chaos_modbus pthread chaos_cutoolkit chaos_common boost_program_options boost_system boost_thread boost_chrono boost_regex boost_log boost_log_setup boost_atomic memcached common_modbus)
+
+#SET_TARGET_PROPERTIES(chaos_modbus_static PROPERTIES OUTPUT_NAME chaos_modbus)
+
+TARGET_LINK_LIBRARIES(modbusControlUnit chaos_cutoolkit chaos_common common_modbus modbus ${FrameworkLib})
+TARGET_LINK_LIBRARIES(chaos_modbus chaos_cutoolkit chaos_common ${FrameworkLib})
 
 
 
 INSTALL_TARGETS(/bin modbusControlUnit)
 INSTALL_TARGETS(/lib chaos_modbus)
+
 FILE(GLOB headers "core/*.h")
 INSTALL(FILES ${headers} DESTINATION include/driver/modbus/core)

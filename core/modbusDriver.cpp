@@ -1,7 +1,7 @@
 /*
- *	SiemensS7TcpDriver.h
+ *	modbusDriver.cpp
  *	!CHOAS
- *	Created by Bisegni Claudio.
+ *	Created by Andrea Michelotti
  *
  *    	Copyright 2013 INFN, National Institute of Nuclear Physics
  *
