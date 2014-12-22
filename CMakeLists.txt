@@ -19,7 +19,7 @@ ADD_EXECUTABLE(modbusControlUnit ${modbuscu_src})
 #SET_TARGET_PROPERTIES(chaos_modbus_static PROPERTIES OUTPUT_NAME chaos_modbus)
 
 TARGET_LINK_LIBRARIES(modbusControlUnit chaos_cutoolkit chaos_common common_modbus modbus ${FrameworkLib})
-TARGET_LINK_LIBRARIES(chaos_modbus chaos_cutoolkit chaos_common ${FrameworkLib})
+TARGET_LINK_LIBRARIES(chaos_modbus chaos_cutoolkit chaos_common common_modbus modbus ${FrameworkLib})
 
 
 
