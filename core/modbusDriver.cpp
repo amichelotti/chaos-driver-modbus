@@ -68,7 +68,7 @@ void modbusDriver::driverInit(const char *initParameter) throw(chaos::CException
          throw chaos::CException(1, "Cannot allocate resources for Modbus driver", "modbusDriver::driverInit");
     }
 
-    LDBG_ << __FUNCTION__ <<" driver count:"<<driver.use_count()<<" pointer:x"<<hex<<driver.get()<<dec;
+    LDBG_ << __FUNCTION__ <<" driver count:"<<driver.use_count()<<" pointer:x"<<std::hex<<driver.get()<<std::dec;
 
     if(driver->initFromParams()<=0){
         driverDeinit();
@@ -85,7 +85,7 @@ void modbusDriver::driverInit(const char *initParameter) throw(chaos::CException
 
 void modbusDriver::driverDeinit() throw(chaos::CException) {
     
-    LDBG_<< "Deinit modbus, deallocating driver x"<<hex<<driver.get()<<dec<<" that is used by :"<<driver.use_count()-1;
+  LDBG_<< "Deinit modbus, deallocating driver x"<<std::hex<<driver.get()<<std::dec<<" that is used by :"<<driver.use_count()-1;
     if(driver.use_count()==2){
             ::common::modbus::ModBusDrv::removeInstance(driver);
 
@@ -162,26 +162,26 @@ cu_driver::MsgManagmentResultType::MsgManagmentResult  modbusDriver::execOpcode(
             
         case OP_READ_COIL_STATUS:{
             uint8_t* buf=(uint8_t*)(out + 1);
-              modbusLDBG_ << "Read Coil status:@"<<in->regadd<<" sizeb:"<<in->sizeb<<" slave:"<<in->slaveid<<" @x"<<hex<<buf;
+	    modbusLDBG_ << "Read Coil status:@"<<in->regadd<<" sizeb:"<<in->sizeb<<" slave:"<<in->slaveid<<" @x"<<std::hex<<buf;
             out->ret=driver->read_coil_status(in->regadd, in->sizeb,buf,in->slaveid);
             break;
         }
         case OP_READ_INPUT_STATUS:{
             uint8_t* buf=(uint8_t*)(out+ 1);
-            modbusLDBG_ << "Read Input status:@"<<in->regadd<<" sizeb:"<<in->sizeb<<" slave:"<<in->slaveid<<" @x"<<hex<<buf;
+            modbusLDBG_ << "Read Input status:@"<<in->regadd<<" sizeb:"<<in->sizeb<<" slave:"<<in->slaveid<<" @x"<<std::hex<<buf;
             out->ret=driver->read_input_status(in->regadd, in->sizeb,buf,in->slaveid);
             break;
         }
         case OP_READ_HOLDING_REGISTERS:{
             uint16_t* buf=(uint16_t*)(out + 1);
-            modbusLDBG_ << "Read holding register:@"<<dec<<in->regadd<<" sizeb:"<<in->sizeb<<" slave:"<<in->slaveid<<" @x"<<hex<<buf;
+            modbusLDBG_ << "Read holding register:@"<<std::dec<<in->regadd<<" sizeb:"<<in->sizeb<<" slave:"<<in->slaveid<<" @x"<<std::hex<<buf;
             out->ret=driver->read_holding_registers(in->regadd, in->sizeb>>1,buf,in->slaveid);
             break;
         }
         case OP_READ_INPUT_REGISTERS:{
             uint16_t* buf=(uint16_t*)(out + 1);
             int ret;
-            modbusLDBG_ << "Read input register:@"<<dec<<in->regadd<<" sizeb:"<<in->sizeb<<" slave:"<<in->slaveid<<" @x"<<hex<<buf;
+            modbusLDBG_ << "Read input register:@"<<std::dec<<in->regadd<<" sizeb:"<<in->sizeb<<" slave:"<<in->slaveid<<" @x"<<std::hex<<buf;
             //float* data=(float*)buf;
             ret = driver->read_input_registers(in->regadd, in->sizeb>>1,(uint16_t*)buf,in->slaveid);
            
@@ -199,14 +199,14 @@ cu_driver::MsgManagmentResultType::MsgManagmentResult  modbusDriver::execOpcode(
             
         case OP_FORCE_SINGLE_COIL:{
             uint8_t value = *(uint8_t*)(in+1);
-            modbusLDBG_ << "Force Single Coil:@"<<dec<<in->regadd<<" value:x"<<hex<<value<<" slave:"<<dec<<in->slaveid;
+            modbusLDBG_ << "Force Single Coil:@"<<std::dec<<in->regadd<<" value:x"<<std::hex<<value<<" slave:"<<std::dec<<in->slaveid;
 
             out->ret = driver->force_single_coil(in->regadd, value,in->slaveid);
             break;
         }
         case OP_PRESET_SINGLE_REGISTER:{
             uint16_t value = *(uint16_t*)(in+1);
-            modbusLDBG_ << "Preset single register:@"<<dec<<in->regadd<<" value:x"<<hex<<value<<" slave:"<<dec<<in->slaveid;
+            modbusLDBG_ << "Preset single register:@"<<std::dec<<in->regadd<<" value:x"<<std::hex<<value<<" slave:"<<std::dec<<in->slaveid;
 
             out->ret = driver->preset_single_register(in->regadd, value,in->slaveid);
             break;
@@ -214,7 +214,7 @@ cu_driver::MsgManagmentResultType::MsgManagmentResult  modbusDriver::execOpcode(
 
         case OP_FORCE_MULTIPLE_COILS:{
             uint8_t* buf = (uint8_t*)(in+1);
-            modbusLDBG_ << "Force Multiple Coil:@"<<in->regadd<<" buf:x"<<hex<<buf<<" sizeb:"<<in->sizeb<<" slave:"<<dec<<in->slaveid;
+            modbusLDBG_ << "Force Multiple Coil:@"<<in->regadd<<" buf:x"<<std::hex<<buf<<" sizeb:"<<in->sizeb<<" slave:"<<std::dec<<in->slaveid;
 
             out->ret = driver->force_multiple_coils(in->regadd, in->sizeb,buf,in->slaveid);
             break;
@@ -222,7 +222,7 @@ cu_driver::MsgManagmentResultType::MsgManagmentResult  modbusDriver::execOpcode(
             
         case OP_FORCE_MULTIPLE_REGISTERS:{
             uint16_t* buf = (uint16_t*)(in+1);
-            modbusLDBG_ << "Force Multiple Registers:@"<<dec<<in->regadd<<" buf:x"<<hex<<buf<<" sizeb:"<<in->sizeb<<" slave:"<<dec<<in->slaveid;
+            modbusLDBG_ << "Force Multiple Registers:@"<<std::dec<<in->regadd<<" buf:x"<<std::hex<<buf<<" sizeb:"<<in->sizeb<<" slave:"<<std::dec<<in->slaveid;
 
             out->ret = driver->force_multiple_registers(in->regadd, in->sizeb,buf,in->slaveid);
             break;
@@ -230,7 +230,7 @@ cu_driver::MsgManagmentResultType::MsgManagmentResult  modbusDriver::execOpcode(
         case OP_WRITE_AND_READ_REGISTERS:{
             uint16_t *ibuf = (uint16_t *)(in+1);
             uint16_t *obuf = (uint16_t *)(out+1);
-            modbusLDBG_ << "Write Read Registers:w@"<<in->regadd<<" wbuf:x"<<hex<<ibuf<<" wsizeb:"<<in->sizeb<<"r@"<<in->regadd2<<" rbuf:x"<<hex<<obuf<<" rsizeb:"<<in->sizeb2<<" slave:"<<dec<<in->slaveid;
+            modbusLDBG_ << "Write Read Registers:w@"<<in->regadd<<" wbuf:x"<<std::hex<<ibuf<<" wsizeb:"<<in->sizeb<<"r@"<<in->regadd2<<" rbuf:x"<<std::hex<<obuf<<" rsizeb:"<<in->sizeb2<<" slave:"<<std::dec<<in->slaveid;
 
             out->ret = driver->write_and_read_registers(in->regadd, in->sizeb, ibuf, in->regadd2, in->sizeb2, obuf,in->slaveid);
 
