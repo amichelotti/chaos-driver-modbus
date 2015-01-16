@@ -28,16 +28,16 @@ using namespace chaos::common::data;
 using namespace chaos::common::batch_command;
 using namespace chaos::cu::driver_manager::driver;
 
-namespace own =  chaos::driver::modbus;
+
 
 #define SCCUAPP LAPP_ << "[ModbusControlUnit - " << getCUID() << "] - "
-
-PUBLISHABLE_CONTROL_UNIT_IMPLEMENTATION(own::ModbusControlUnit)
+								 
+PUBLISHABLE_CONTROL_UNIT_IMPLEMENTATION(chaos::driver::modbus::ModbusControlUnit);
 
 /*
  Construct a new CU with an identifier
  */
-own::ModbusControlUnit::ModbusControlUnit(const string& _control_unit_id,
+chaos::driver::modbus::ModbusControlUnit::ModbusControlUnit(const string& _control_unit_id,
 										  const string& _control_unit_param,
 										  const ControlUnitDriverList& _control_unit_drivers):
 //call base constructor
@@ -51,7 +51,7 @@ chaos::cu::control_manager::RTAbstractControlUnit(_control_unit_id,
 /*
  Base destructor
  */
-own::ModbusControlUnit::~ModbusControlUnit() {
+chaos::driver::modbus::ModbusControlUnit::~ModbusControlUnit() {
 	
 }
 
@@ -59,7 +59,7 @@ own::ModbusControlUnit::~ModbusControlUnit() {
 /*
  Return the default configuration
  */
-void own::ModbusControlUnit::unitDefineActionAndDataset() throw(chaos::CException) {
+void chaos::driver::modbus::ModbusControlUnit::unitDefineActionAndDataset() throw(chaos::CException) {
 	//set it has default
 	
 	//setup the dataset
@@ -84,12 +84,12 @@ void own::ModbusControlUnit::unitDefineActionAndDataset() throw(chaos::CExceptio
 	
 }
 
-void own::ModbusControlUnit::unitInputAttributeChangedHandler() throw(CException) {
+void chaos::driver::modbus::ModbusControlUnit::unitInputAttributeChangedHandler() throw(CException) {
 	
 }
 
 // Abstract method for the initialization of the control unit
-void own::ModbusControlUnit::unitInit() throw(CException) {
+void chaos::driver::modbus::ModbusControlUnit::unitInit() throw(CException) {
 	SCCUAPP "unitInit";
 	
 	
@@ -123,7 +123,7 @@ void own::ModbusControlUnit::unitInit() throw(CException) {
 	o_out_1 = getAttributeCache()->getRWPtr<double>(chaos::common::data::cache::DOMAIN_OUTPUT, "sinWave");
 }
 
-void own::ModbusControlUnit::unitRun() throw(CException) {
+void chaos::driver::modbus::ModbusControlUnit::unitRun() throw(CException) {
 	uint32_t data;
 	float* dataf=(float*)&data;
 	//assume 32 bit floating point registers
@@ -139,16 +139,16 @@ void own::ModbusControlUnit::unitRun() throw(CException) {
 }
 
 // Abstract method for the start of the control unit
-void own::ModbusControlUnit::unitStart() throw(CException) {
+void chaos::driver::modbus::ModbusControlUnit::unitStart() throw(CException) {
 	
 }
 
 // Abstract method for the stop of the control unit
-void own::ModbusControlUnit::unitStop() throw(CException) {
+void chaos::driver::modbus::ModbusControlUnit::unitStop() throw(CException) {
 	
 }
 
 // Abstract method for the deinit of the control unit
-void own::ModbusControlUnit::unitDeinit() throw(CException) {
+void chaos::driver::modbus::ModbusControlUnit::unitDeinit() throw(CException) {
 	
 }

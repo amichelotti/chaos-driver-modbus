@@ -30,18 +30,17 @@ using namespace chaos::common::batch_command;
 
 using namespace chaos::cu::driver_manager::driver;
 
-namespace own =  chaos::driver::modbus;
 
 #define SCCUAPP LAPP_ << "[ModbusFemtoUnit - " << getCUID() << "] - "
 
-PUBLISHABLE_CONTROL_UNIT_IMPLEMENTATION(own::ModbusFemtoUnit)
+PUBLISHABLE_CONTROL_UNIT_IMPLEMENTATION(chaos::driver::modbus::ModbusFemtoUnit)
 
 /*
  Construct a new CU with an identifier
  */
-boost::mutex own::ModbusFemtoUnit::slock;
+boost::mutex chaos::driver::modbus::ModbusFemtoUnit::slock;
 
-own::ModbusFemtoUnit::ModbusFemtoUnit(const string& _control_unit_id,
+chaos::driver::modbus::ModbusFemtoUnit::ModbusFemtoUnit(const string& _control_unit_id,
 														const string& _control_unit_param,
 														const ControlUnitDriverList& _control_unit_drivers):
 //call base constructor
@@ -55,7 +54,7 @@ ModbusControlUnit(_control_unit_id,
 /*
  Base destructor
  */
-own::ModbusFemtoUnit::~ModbusFemtoUnit() {
+chaos::driver::modbus::ModbusFemtoUnit::~ModbusFemtoUnit() {
 	
 }
 
@@ -63,7 +62,7 @@ own::ModbusFemtoUnit::~ModbusFemtoUnit() {
 /*
  Return the default configuration
  */
-void own::ModbusFemtoUnit::unitDefineActionAndDataset() throw(chaos::CException) {
+void chaos::driver::modbus::ModbusFemtoUnit::unitDefineActionAndDataset() throw(chaos::CException) {
        //set it has default
    setDefaultScheduleDelay(2000);
 
@@ -132,12 +131,12 @@ void own::ModbusFemtoUnit::unitDefineActionAndDataset() throw(chaos::CException)
                            DataType::Output);
 }
 
-void own::ModbusFemtoUnit::defineSharedVariable() {
+void chaos::driver::modbus::ModbusFemtoUnit::defineSharedVariable() {
 	
 }
 
 // Abstract method for the initialization of the control unit
-void own::ModbusFemtoUnit::unitInit() throw(CException) {
+void chaos::driver::modbus::ModbusFemtoUnit::unitInit() throw(CException) {
 	SCCUAPP "unitInit";
     
     
@@ -164,7 +163,7 @@ void own::ModbusFemtoUnit::unitInit() throw(CException) {
         
    }
 
-void own::ModbusFemtoUnit::unitRun() throw(CException) {
+void chaos::driver::modbus::ModbusFemtoUnit::unitRun() throw(CException) {
     boost::mutex::scoped_lock l(slock);
 
     driver->connect();
@@ -214,16 +213,16 @@ void own::ModbusFemtoUnit::unitRun() throw(CException) {
 }
 
 // Abstract method for the start of the control unit
-void own::ModbusFemtoUnit::unitStart() throw(CException) {
+void chaos::driver::modbus::ModbusFemtoUnit::unitStart() throw(CException) {
 	
 }
 
 // Abstract method for the stop of the control unit
-void own::ModbusFemtoUnit::unitStop() throw(CException) {
+void chaos::driver::modbus::ModbusFemtoUnit::unitStop() throw(CException) {
 	
 }
 
 // Abstract method for the deinit of the control unit
-void own::ModbusFemtoUnit::unitDeinit() throw(CException) {
+void chaos::driver::modbus::ModbusFemtoUnit::unitDeinit() throw(CException) {
 	
 }

@@ -24,9 +24,7 @@
 #include <driver/modbus/core/ChaosModbusInterface.h>
 
 
-using namespace boost::msm::front::euml;
-using namespace boost::msm::front;
-//namespace mpl = boost::mpl;
+
 #define MAX_REGISTERS 16
 
 #define MODBUS_PUSH_UNSIGNED_REGISTER(REG_NAME,slave_id,driver,swap,factor,data) {\

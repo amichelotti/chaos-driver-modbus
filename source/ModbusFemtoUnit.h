@@ -24,8 +24,7 @@
 #include <driver/modbus/core/ChaosModbusInterface.h>
 #include "ModbusControlUnit.h"
 
-using namespace boost::msm::front::euml;
-using namespace boost::msm::front;
+
 //namespace mpl = boost::mpl;
 #define MAX_REGISTERS 16
 namespace chaos{
