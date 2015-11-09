@@ -16,8 +16,8 @@ IF(BUILD_FORCE_STATIC)
 ELSE()
   
   ADD_LIBRARY(chaos_driver_modbus SHARED ${modbusdriver_src})
-  TARGET_LINK_LIBRARIES(modbusControlUnit chaos_driver_modbus chaos_cutoolkit common_modbus modbus chaos_common ${FrameworkLib})
-  TARGET_LINK_LIBRARIES(chaos_driver_modbus chaos_cutoolkit common_modbus modbus chaos_common ${FrameworkLib})
+  TARGET_LINK_LIBRARIES(modbusControlUnit chaos_driver_modbus chaos_cutoolkit common_modbus modbus chaos_common pthread)
+  TARGET_LINK_LIBRARIES(chaos_driver_modbus chaos_cutoolkit common_modbus modbus chaos_common pthread)
 ENDIF()
 
 

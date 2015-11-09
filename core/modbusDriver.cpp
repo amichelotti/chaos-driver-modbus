@@ -1,6 +1,6 @@
 /*
  *	modbusDriver.cpp
- *	!CHOAS
+ *	!CHAOS
  *	Created by Andrea Michelotti
  *
  *    	Copyright 2013 INFN, National Institute of Nuclear Physics
@@ -18,7 +18,7 @@
  *    	limitations under the License.
  */
 #include "modbusDriver.h"
-#include <common/modbus/modbus.h>
+#include <common/modbus/ModBus.h>
 #include <string>
 
 #include <chaos/cu_toolkit/driver_manager/driver/AbstractDriverPlugin.h>

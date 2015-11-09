@@ -25,7 +25,7 @@
 
 #include <chaos/cu_toolkit/driver_manager/driver/AbstractDriverPlugin.h>
 #include <driver/modbus/core/ChaosModbusInterface.h>
-#include <common/modbus/modbus.h>
+#include <common/modbus/ModBus.h>
 #include <boost/shared_ptr.hpp>
 #include <boost/thread/mutex.hpp>
 
