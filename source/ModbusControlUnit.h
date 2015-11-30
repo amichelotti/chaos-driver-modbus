@@ -20,7 +20,7 @@
 #ifndef __PowerSupply__ModbusControlUnit__
 #define __PowerSupply__ModbusControlUnit__
 
-#include <chaos/cu_toolkit/ControlManager/RTAbstractControlUnit.h>
+#include <chaos/cu_toolkit/control_manager/RTAbstractControlUnit.h>
 #include <driver/modbus/core/ChaosModbusInterface.h>
 
 
