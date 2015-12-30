@@ -53,8 +53,8 @@ In file included from /home/chaos/chaos_bundle_cnaf/driver/modbus/core/modbusDri
 Linking CXX shared library build/libchaos_modbus.so
 [ 33%] Built target chaos_modbus
 [ 50%] Building CXX object CMakeFiles/modbusControlUnit.dir/source/main.cpp.o
-In file included from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/ControlManager/AbstractControlUnit.h:34,
-                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/ControlManager/RTAbstractControlUnit.h:26,
+In file included from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/control_manager/AbstractControlUnit.h:34,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/control_manager/RTAbstractControlUnit.h:26,
                  from /home/chaos/chaos_bundle_cnaf/driver/modbus/source/ModbusControlUnit.h:23,
                  from /home/chaos/chaos_bundle_cnaf/driver/modbus/source/main.cpp:22:
 /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/action/ActionDescriptor.h:119: warning: ignoring #pragma mark Param
@@ -92,7 +92,7 @@ In file included from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/loca
                  from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/direct_io/impl/ZMQDirectIOClient.h:26,
                  from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/direct_io/DirectIO.h:24,
                  from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/network/NetworkBroker.h:28,
-                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/CommandManager/CommandManager.h:37,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/command_manager/CommandManager.h:37,
                  from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/ChaosCUToolkit.h:32,
                  from /home/chaos/chaos_bundle_cnaf/driver/modbus/source/main.cpp:25:
 /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/utility/endianess.h: In member function ‘float util::swap_bytes<float, 4ul>::operator()(float)’:
@@ -106,7 +106,7 @@ In file included from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/loca
                  from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/direct_io/impl/ZMQDirectIOClient.h:26,
                  from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/direct_io/DirectIO.h:24,
                  from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/network/NetworkBroker.h:28,
-                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/CommandManager/CommandManager.h:37,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/command_manager/CommandManager.h:37,
                  from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/ChaosCUToolkit.h:32,
                  from /home/chaos/chaos_bundle_cnaf/driver/modbus/source/main.cpp:25:
 /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/direct_io/channel/DirectIOVirtualClientChannel.h: In constructor ‘chaos::common::direct_io::channel::DisposeSentMemoryInfo::DisposeSentMemoryInfo(chaos::common::direct_io::channel::DirectIOVirtualClientChannel*, uint8_t, uint16_t)’:
@@ -114,17 +114,17 @@ In file included from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/loca
 /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/direct_io/channel/DirectIOVirtualClientChannel.h:40: warning:   ‘uint8_t chaos::common::direct_io::channel::DisposeSentMemoryInfo::sent_part’
 /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/direct_io/channel/DirectIOVirtualClientChannel.h:43: warning:   when initialized here
 [ 66%] Building CXX object CMakeFiles/modbusControlUnit.dir/source/ModbusControlUnit.cpp.o
-In file included from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/ControlManager/AbstractControlUnit.h:34,
-                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/ControlManager/RTAbstractControlUnit.h:26,
+In file included from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/control_manager/AbstractControlUnit.h:34,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/control_manager/RTAbstractControlUnit.h:26,
                  from /home/chaos/chaos_bundle_cnaf/driver/modbus/source/ModbusControlUnit.h:23,
                  from /home/chaos/chaos_bundle_cnaf/driver/modbus/source/ModbusControlUnit.cpp:21:
 /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/action/ActionDescriptor.h:119: warning: ignoring #pragma mark Param
 /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/action/ActionDescriptor.h:134: warning: ignoring #pragma mark Template
 In file included from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bson.h:37,
                  from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/data/CDataWrapper.h:25,
-                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/ControlManager/handler/DSAttributeHandler.h:25,
-                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/ControlManager/DSAttributeHandlerExecutionEngine.h:32,
-                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/ControlManager/RTAbstractControlUnit.h:24,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/control_manager/handler/DSAttributeHandler.h:25,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/control_manager/DSAttributeHandlerExecutionEngine.h:32,
+                 from /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/cu_toolkit/control_manager/RTAbstractControlUnit.h:24,
                  from /home/chaos/chaos_bundle_cnaf/driver/modbus/source/ModbusControlUnit.h:23,
                  from /home/chaos/chaos_bundle_cnaf/driver/modbus/source/ModbusControlUnit.cpp:21:
 /home/chaos/chaos_bundle_cnaf/driver/modbus/../../usr/local/include/chaos/common/bson/bsonobjbuilder.h: In constructor ‘bson::BSONObjBuilder::BSONObjBuilder(bool, int)’:

@@ -13,15 +13,15 @@
             <in>CMakeCXXCompilerId.cpp</in>
           </df>
         </df>
-        <df name="chaos_modbus.dir">
+        <df name="chaos_driver_modbus.dir">
           <df name="core">
+          </df>
+          <df name="source">
           </df>
         </df>
         <df name="CMakeTmp">
         </df>
         <df name="modbusControlUnit.dir">
-          <df name="core">
-          </df>
           <df name="source">
           </df>
         </df>
@@ -72,8 +72,6 @@
         <gdb_interceptlist>
           <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
         </gdb_interceptlist>
-        <gdb_signals>
-        </gdb_signals>
         <gdb_options>
           <DebugOptions>
           </DebugOptions>
