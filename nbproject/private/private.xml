@@ -21,5 +21,6 @@
             <file>file:/home/chaos/chaos_bundle_cnaf/driver/modbus/core/ChaosModbusInterface.h</file>
             <file>file:/home/chaos/chaos_bundle_cnaf/driver/modbus/core/modbusDriver.h</file>
         </group>
+        <group name="CHAOS_BUNDLE_DEVELOPMENT"/>
     </open-files>
 </project-private>
