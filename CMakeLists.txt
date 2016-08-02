@@ -1,4 +1,5 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 2.8)
+project(chaos_driver_modbus)
 SET(CHAOS_CUS source/ModbusControlUnit.cpp source/ModbusFemtoUnit.cpp)
 
 SET(modbusdriver_src core/modbusDriver.cpp core/ChaosModbusInterface.cpp ${CHAOS_CUS})
