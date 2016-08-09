@@ -1,26 +1,26 @@
 cmake_minimum_required(VERSION 2.8)
 project(chaos_driver_modbus)
-SET(CHAOS_CUS source/ModbusControlUnit.cpp source/ModbusFemtoUnit.cpp)
+SET(CHAOS_CUS core/ModbusControlUnit.cpp)
 
 SET(modbusdriver_src core/modbusDriver.cpp core/ChaosModbusInterface.cpp ${CHAOS_CUS})
-SET(modbuscu_src source/main.cpp )
+SET(modbuscu_src test/main.cpp )
 
-ADD_EXECUTABLE(modbusControlUnit ${modbuscu_src})
+
 
 IF(BUILD_FORCE_STATIC)
-  ADD_LIBRARY(chaos_driver_modbus STATIC ${modbusdriver_src})
-  SET(CMAKE_EXE_LINKER_FLAGS "-static -Wl,--whole-archive -lchaos_common -Wl,--no-whole-archive")
-  TARGET_LINK_LIBRARIES(modbusControlUnit chaos_driver_modbus chaos_cutoolkit common_modbus modbus ${FrameworkLib})
-  TARGET_LINK_LIBRARIES(chaos_driver_modbus chaos_cutoolkit common_modbus modbus ${FrameworkLib})
+  ADD_LIBRARY(${PROJECT_NAME} STATIC ${modbusdriver_src})
+  SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static -Wl,--whole-archive -lchaos_common -Wl,--no-whole-archive")
 ELSE()
-  
-  ADD_LIBRARY(chaos_driver_modbus SHARED ${modbusdriver_src})
-  TARGET_LINK_LIBRARIES(modbusControlUnit chaos_driver_modbus chaos_cutoolkit common_modbus modbus chaos_common pthread)
-  TARGET_LINK_LIBRARIES(chaos_driver_modbus chaos_cutoolkit common_modbus modbus chaos_common pthread)
+  ADD_LIBRARY(${PROJECT_NAME} SHARED ${modbusdriver_src})
 ENDIF()
 
+  
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} chaos_cutoolkit common_modbus modbus ${FrameworkLib})
+SET(DRIVERS_LIB ${PROJECT_NAME})
+ADD_SUBDIRECTORY(models)
 
-
+ADD_EXECUTABLE(modbusControlUnit ${modbuscu_src})
+TARGET_LINK_LIBRARIES(modbusControlUnit ${DRIVERS_LIB} chaos_cutoolkit common_modbus chaos_common modbus ${FrameworkLib})
 INSTALL_TARGETS(/bin modbusControlUnit)
-INSTALL_TARGETS(/lib chaos_driver_modbus)
+INSTALL_TARGETS(/lib ${PROJECT_NAME})
 

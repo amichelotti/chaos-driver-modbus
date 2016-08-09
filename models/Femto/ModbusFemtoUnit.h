@@ -22,7 +22,7 @@
 
 #include <chaos/cu_toolkit/control_manager/RTAbstractControlUnit.h>
 #include <driver/modbus/core/ChaosModbusInterface.h>
-#include "ModbusControlUnit.h"
+#include <driver/modbus/core/ModbusControlUnit.h>
 
 
 //namespace mpl = boost::mpl;
