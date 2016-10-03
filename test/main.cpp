@@ -19,8 +19,8 @@
  */
 
 #include <driver/modbus/core/modbusDriver.h>
-#include "ModbusControlUnit.h"
-#include "ModbusFemtoUnit.h"
+#include <driver/modbus/core/ModbusControlUnit.h>
+#include <driver/modbus/models/Femto/ModbusFemtoUnit.h>
 
 #include <chaos/common/chaos_constants.h>
 #include <chaos/cu_toolkit/ChaosCUToolkit.h>
