@@ -18,7 +18,7 @@
  *    	limitations under the License.
  */
 #include "modbusDriver.h"
-#include <common/modbus/ModBus.h>
+#include <common/modbus/core/ModbusChannelFactory.h>
 #include <string>
 
 #include <chaos/cu_toolkit/driver_manager/driver/AbstractDriverPlugin.h>
@@ -45,22 +45,22 @@ using namespace chaos::driver::modbus;
 
 //default constructor definition
 DEFAULT_CU_DRIVER_PLUGIN_CONSTRUCTOR_WITH_NS(chaos::driver::modbus, modbusDriver) {
-	driver=boost::shared_ptr< ::common::modbus::ModBusDrv>();
 }
 
 //default descrutcor
 modbusDriver::~modbusDriver() {
 	
 }
+void modbusDriver::driverInit(const char *initParameter) throw(chaos::CException){
+    throw chaos::CException(1, "NOT IMPLEMENTED ANY MORE PLEASE CHANGE INTO JSON INITIALISAITON", "modbusDriver::driverInit");
 
-void modbusDriver::driverInit(const char *initParameter) throw(chaos::CException) {
-	boost::smatch match;
-	std::string inputStr = initParameter;
-	LDBG_ << __FUNCTION__ <<" initialisation string:\""<<inputStr<<"\"";
-    if(driver.get()){
-        throw chaos::CException(1, "Already Initialised", __FUNCTION__);
-    }
-    driver = ::common::modbus::ModBusDrv::getInstance(inputStr);
+
+}
+
+void  modbusDriver::driverInit(const chaos::common::data::CDataWrapper& json) throw(chaos::CException) {
+	LDBG_ << __FUNCTION__ <<" JSON initialisation :\""<<json.getJSONString()<<"\"";
+
+    driver = ::common::modbus::ModbusChannelFactory::getChannel(json);
     
         
 
@@ -70,7 +70,7 @@ void modbusDriver::driverInit(const char *initParameter) throw(chaos::CException
 
     LDBG_ << __FUNCTION__ <<" driver count:"<<driver.use_count()<<" pointer:x"<<std::hex<<driver.get()<<std::dec;
 
-    if(driver->initFromParams()<=0){
+    if(driver->init()<=0){
         driverDeinit();
         throw chaos::CException(1, "Cannot initialize modbus driver", "modbusDriver::driverInit");
     }
@@ -87,7 +87,7 @@ void modbusDriver::driverDeinit() throw(chaos::CException) {
     
   LDBG_<< "Deinit modbus, deallocating driver x"<<std::hex<<driver.get()<<std::dec<<" that is used by :"<<driver.use_count()-1;
     if(driver.use_count()==2){
-            ::common::modbus::ModBusDrv::removeInstance(driver);
+    	::common::modbus::ModbusChannelFactory::removeChannel(driver);
 
             driver.reset();
             LDBG_<<"driver deallocated: "<<driver.use_count();
