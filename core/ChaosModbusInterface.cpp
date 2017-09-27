@@ -85,7 +85,16 @@ int ChaosModbusInterface::flush(void){
     RETURN_INT;
 
 }
+int ChaosModbusInterface::init(void){
+    PREPARE_CALL0(OP_INIT);
+    RETURN_INT;
+}
 
+int ChaosModbusInterface::deinit(void){
+    PREPARE_CALL0(OP_DEINIT);
+    RETURN_INT;
+
+}
 int ChaosModbusInterface::close(void){
     PREPARE_CALL0(OP_CLOSE);
     RETURN_INT;

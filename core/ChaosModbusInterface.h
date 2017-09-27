@@ -78,8 +78,9 @@ namespace chaos {
                 chaos_driver::DriverAccessor* accessor;
                 
                 
-                // called by the inner driver
-                int init (std::string a){return 0;}
+                int init ();
+
+                 int deinit ();
                 /**
                  connect to a target modbus device
                  @return true on success
