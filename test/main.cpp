@@ -48,7 +48,7 @@ namespace common_utility = chaos::common::utility;
 namespace cu_driver_manager = chaos::cu::driver_manager;
 
 
-int main (int argc, char* argv[] )
+int main (int argc, const char* argv[] )
 {
     string tmp_device_id;
 	string tmp_definition_param;
