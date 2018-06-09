@@ -24,6 +24,9 @@ ADD_SUBDIRECTORY(models)
 
 ADD_EXECUTABLE(modbusControlUnit ${modbuscu_src})
 TARGET_LINK_LIBRARIES(modbusControlUnit ${DRIVERS_LIB} chaos_cutoolkit common_modbus chaos_common modbus ${FrameworkLib})
+FILE(GLOB files "core/*.h")
+INSTALL(FILES ${files} DESTINATION include/driver/modbus/core)
+
 INSTALL_TARGETS(/bin modbusControlUnit)
 INSTALL_TARGETS(/lib ${PROJECT_NAME})
 
