@@ -16,7 +16,7 @@ char*buff = (char*)malloc(sizeof(modbus_iparams_t)+_sizeb);\
 if(buff==NULL) {throw chaos::CException(1, "cannot allocate memory for driver", "ChaosModbusInterface::write");}\
 modbus_iparams_t *idata=(modbus_iparams_t *)buff;\
 idata->regadd = add;idata->slaveid=_slaveid;idata->sizeb=_sizeb;\
-memcpy(idata+1,_buf,_sizeb);\
+if(_buf!=NULL) memcpy(idata+1,_buf,_sizeb);\
 message.opcode = op; \
 message.inputData=(void*)idata;\
 message.inputDataLength=sizeof(modbus_iparams_t)+_sizeb;\
@@ -69,8 +69,21 @@ ret.ret = pret->ret;\
 free(buff);
 
 
-#define PREPARE_CALL0(op) PREPARE_WRITE_OP(op,0,0,0,0);
-#define PREPARE_CALL1(op,data) PREPARE_WRITE_OP(op,data,0,0,0);
+#define PREPARE_CALL1(op,add) \
+modbus_oparams_t ret; \
+char*buff = (char*)malloc(sizeof(modbus_iparams_t));\
+if(buff==NULL) {throw chaos::CException(1, "cannot allocate memory for driver", "ChaosModbusInterface::write");}\
+modbus_iparams_t *idata=(modbus_iparams_t *)buff;\
+idata->regadd = add;idata->slaveid=0;idata->sizeb=0;\
+message.opcode = op; \
+message.inputData=(void*)idata;\
+message.inputDataLength=sizeof(modbus_iparams_t);\
+message.resultDataLength=sizeof(modbus_oparams_t);\
+message.resultData = (void*)&ret;\
+accessor->send(&message);\
+free(buff);
+
+#define PREPARE_CALL0(op) PREPARE_CALL1(op,0);
 
 using namespace chaos::driver::modbus;
 
