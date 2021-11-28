@@ -45,7 +45,7 @@ namespace driver {
 			void driverDeinit() throw(chaos::CException);
 
 			::common::modbus::AbstractModbusChannel_psh driver;
-             boost::mutex lock;
+            ChaosMutex lock;
                  
 		public:
 			modbusDriver();

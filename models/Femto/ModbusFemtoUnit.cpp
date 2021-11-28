@@ -38,7 +38,7 @@ PUBLISHABLE_CONTROL_UNIT_IMPLEMENTATION(chaos::driver::modbus::ModbusFemtoUnit)
 /*
  Construct a new CU with an identifier
  */
-boost::mutex chaos::driver::modbus::ModbusFemtoUnit::slock;
+ChaosMutex chaos::driver::modbus::ModbusFemtoUnit::slock;
 
 chaos::driver::modbus::ModbusFemtoUnit::ModbusFemtoUnit(const string& _control_unit_id,
 														const string& _control_unit_param,
@@ -164,7 +164,7 @@ void chaos::driver::modbus::ModbusFemtoUnit::unitInit() throw(CException) {
    }
 
 void chaos::driver::modbus::ModbusFemtoUnit::unitRun() throw(CException) {
-    boost::mutex::scoped_lock l(slock);
+    ChaosLockGuard l(slock);
 
     driver->connect();
 	

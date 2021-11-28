@@ -81,7 +81,7 @@ namespace driver {
 			void unitDeinit() throw(chaos::CException);
             
                         void unitRun() throw(chaos::CException);
-			static boost::mutex slock;
+			static ChaosMutex slock;
 		public:
 			/*
 			 Construct a new CU with an identifier
