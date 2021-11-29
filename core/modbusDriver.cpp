@@ -96,7 +96,7 @@ void modbusDriver::driverDeinit() throw(chaos::CException) {
 }
 
 cu_driver::MsgManagmentResultType::MsgManagmentResult  modbusDriver::execOpcode(cu_driver::DrvMsgPtr cmd){
-    boost::mutex::scoped_lock my_lock(lock);
+    ChaosLockGuard my_lock(lock);
     cu_driver::MsgManagmentResultType::MsgManagmentResult result = cu_driver::MsgManagmentResultType::MMR_EXECUTED;
     chaos::driver::modbus::modbus_iparams_t * in= (chaos::driver::modbus::modbus_iparams_t *) cmd->inputData;
     chaos::driver::modbus::modbus_oparams_t * out =(chaos::driver::modbus::modbus_oparams_t *) cmd->resultData;
