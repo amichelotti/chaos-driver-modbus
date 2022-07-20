@@ -26,8 +26,6 @@
 #include <chaos/cu_toolkit/driver_manager/driver/AbstractDriverPlugin.h>
 #include <driver/modbus/core/ChaosModbusInterface.h>
 #include <common/modbus/ModBus.h>
-#include <boost/shared_ptr.hpp>
-#include <boost/thread/mutex.hpp>
 
 //this need to be out the nasmespace
 DEFINE_CU_DRIVER_DEFINITION_PROTOTYPE(modbusDriver)
