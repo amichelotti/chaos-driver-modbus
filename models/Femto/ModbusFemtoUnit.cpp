@@ -62,7 +62,7 @@ chaos::driver::modbus::ModbusFemtoUnit::~ModbusFemtoUnit() {
 /*
  Return the default configuration
  */
-void chaos::driver::modbus::ModbusFemtoUnit::unitDefineActionAndDataset() throw(chaos::CException) {
+void chaos::driver::modbus::ModbusFemtoUnit::unitDefineActionAndDataset()  {
        //set it has default
    setDefaultScheduleDelay(2000);
 
@@ -136,7 +136,7 @@ void chaos::driver::modbus::ModbusFemtoUnit::defineSharedVariable() {
 }
 
 // Abstract method for the initialization of the control unit
-void chaos::driver::modbus::ModbusFemtoUnit::unitInit() throw(CException) {
+void chaos::driver::modbus::ModbusFemtoUnit::unitInit() {
 	SCCUAPP "unitInit";
     
     
@@ -163,7 +163,7 @@ void chaos::driver::modbus::ModbusFemtoUnit::unitInit() throw(CException) {
         
    }
 
-void chaos::driver::modbus::ModbusFemtoUnit::unitRun() throw(CException) {
+void chaos::driver::modbus::ModbusFemtoUnit::unitRun() {
     ChaosLockGuard l(slock);
 
     driver->connect();
@@ -213,16 +213,16 @@ void chaos::driver::modbus::ModbusFemtoUnit::unitRun() throw(CException) {
 }
 
 // Abstract method for the start of the control unit
-void chaos::driver::modbus::ModbusFemtoUnit::unitStart() throw(CException) {
+void chaos::driver::modbus::ModbusFemtoUnit::unitStart(){ 
 	
 }
 
 // Abstract method for the stop of the control unit
-void chaos::driver::modbus::ModbusFemtoUnit::unitStop() throw(CException) {
+void chaos::driver::modbus::ModbusFemtoUnit::unitStop() {
 	
 }
 
 // Abstract method for the deinit of the control unit
-void chaos::driver::modbus::ModbusFemtoUnit::unitDeinit() throw(CException) {
+void chaos::driver::modbus::ModbusFemtoUnit::unitDeinit() {
 	
 }

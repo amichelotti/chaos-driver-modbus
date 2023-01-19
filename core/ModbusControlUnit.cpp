@@ -59,7 +59,7 @@ chaos::driver::modbus::ModbusControlUnit::~ModbusControlUnit() {
 /*
  Return the default configuration
  */
-void chaos::driver::modbus::ModbusControlUnit::unitDefineActionAndDataset() throw(chaos::CException) {
+void chaos::driver::modbus::ModbusControlUnit::unitDefineActionAndDataset()  {
 	//set it has default
 	
 	//setup the dataset
@@ -84,12 +84,12 @@ void chaos::driver::modbus::ModbusControlUnit::unitDefineActionAndDataset() thro
 	
 }
 
-void chaos::driver::modbus::ModbusControlUnit::unitInputAttributeChangedHandler() throw(CException) {
+void chaos::driver::modbus::ModbusControlUnit::unitInputAttributeChangedHandler() {
 	
 }
 
 // Abstract method for the initialization of the control unit
-void chaos::driver::modbus::ModbusControlUnit::unitInit() throw(CException) {
+void chaos::driver::modbus::ModbusControlUnit::unitInit() {
 	SCCUAPP "unitInit";
 	
 	
@@ -123,7 +123,7 @@ void chaos::driver::modbus::ModbusControlUnit::unitInit() throw(CException) {
 	o_out_1 = getAttributeCache()->getRWPtr<double>(chaos::common::data::cache::DOMAIN_OUTPUT, "sinWave");
 }
 
-void chaos::driver::modbus::ModbusControlUnit::unitRun() throw(CException) {
+void chaos::driver::modbus::ModbusControlUnit::unitRun() {
 	uint32_t data;
 	float* dataf=(float*)&data;
 	//assume 32 bit floating point registers
@@ -139,16 +139,16 @@ void chaos::driver::modbus::ModbusControlUnit::unitRun() throw(CException) {
 }
 
 // Abstract method for the start of the control unit
-void chaos::driver::modbus::ModbusControlUnit::unitStart() throw(CException) {
+void chaos::driver::modbus::ModbusControlUnit::unitStart() {
 	
 }
 
 // Abstract method for the stop of the control unit
-void chaos::driver::modbus::ModbusControlUnit::unitStop() throw(CException) {
+void chaos::driver::modbus::ModbusControlUnit::unitStop() {
 	
 }
 
 // Abstract method for the deinit of the control unit
-void chaos::driver::modbus::ModbusControlUnit::unitDeinit() throw(CException) {
+void chaos::driver::modbus::ModbusControlUnit::unitDeinit() {
 	
 }

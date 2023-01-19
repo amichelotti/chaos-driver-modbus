@@ -38,9 +38,9 @@ namespace driver {
 		 driver definition
 		 */
 		class modbusDriver: ADD_CU_DRIVER_PLUGIN_SUPERCLASS {
-			 void driverInit(const char *initParameter) throw(chaos::CException);
-			void driverInit(const chaos::common::data::CDataWrapper& json) throw(chaos::CException);
-			void driverDeinit() throw(chaos::CException);
+			 void driverInit(const char *initParameter) ;
+			void driverInit(const chaos::common::data::CDataWrapper& json) ;
+			void driverDeinit() ;
 
 			::common::modbus::AbstractModbusChannel_psh driver;
             ChaosMutex lock;
