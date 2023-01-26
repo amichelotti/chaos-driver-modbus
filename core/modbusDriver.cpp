@@ -22,7 +22,7 @@
 #include <string>
 
 #include <chaos/cu_toolkit/driver_manager/driver/AbstractDriverPlugin.h>
-#include <boost/regex.hpp>
+#include <regex>
 
 #define modbusLAPP_		LAPP_ << "[modbusDriver] "
 #define modbusLDBG_		LDBG_ << "[modbusDriver] "
