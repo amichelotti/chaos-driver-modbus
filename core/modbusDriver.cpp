@@ -22,7 +22,7 @@
 #include <string>
 
 #include <chaos/cu_toolkit/driver_manager/driver/AbstractDriverPlugin.h>
-#include <boost/regex.hpp>
+#include <regex>
 
 #define modbusLAPP_		LAPP_ << "[modbusDriver] "
 #define modbusLDBG_		LDBG_ << "[modbusDriver] "
@@ -51,13 +51,13 @@ DEFAULT_CU_DRIVER_PLUGIN_CONSTRUCTOR_WITH_NS(chaos::driver::modbus, modbusDriver
 modbusDriver::~modbusDriver() {
 	
 }
-void modbusDriver::driverInit(const char *initParameter) throw(chaos::CException){
+void modbusDriver::driverInit(const char *initParameter) {
     throw chaos::CException(1, "NOT IMPLEMENTED ANY MORE PLEASE CHANGE INTO JSON INITIALISAITON", "modbusDriver::driverInit");
 
 
 }
 
-void  modbusDriver::driverInit(const chaos::common::data::CDataWrapper& json) throw(chaos::CException) {
+void  modbusDriver::driverInit(const chaos::common::data::CDataWrapper& json)  {
 	LDBG_ << __FUNCTION__ <<" JSON initialisation :\""<<json.getJSONString()<<"\"";
 
     driver = ::common::modbus::ModbusChannelFactory::getChannel(json);
@@ -83,7 +83,7 @@ void  modbusDriver::driverInit(const chaos::common::data::CDataWrapper& json) th
     
 }
 
-void modbusDriver::driverDeinit() throw(chaos::CException) {
+void modbusDriver::driverDeinit()  {
     
   LDBG_<< "Deinit modbus, deallocating driver x"<<std::hex<<driver.get()<<std::dec<<" that is used by :"<<driver.use_count()-1;
     if(driver.use_count()==2){
